@@ -43,7 +43,7 @@ $registry->getObject('authenticate')->checkForAuthentication();
 $registry->storeSetting('default', 'skin');
 $registry->storeSetting(1, 'default_shipping_method');
 // populate our page object from a template file
-$registry->getObject('template')->buildFromTemplates('header.tpl.php', 'main.tpl.php');
+$registry->getObject('template')->buildFromTemplates('header_books.tpl.php');//,'main.tpl.php');
 
 // basket
 require_once('controllers/basket/controller.php');
@@ -56,6 +56,7 @@ while( $activeController = $registry->getObject('db')->getRows() )
 {
 	$activeControllers[] = $activeController['controller'];
 }
+
 $currentController = $registry->getURLBit( 0 );
 if( in_array( $currentController, $activeControllers ) )
 {

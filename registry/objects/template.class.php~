@@ -43,7 +43,7 @@ class template {
     private function replaceBits()
     {
 	    $bits = $this->page->getBits();
-	    // loop through template bits e.g.
+	   	// loop through template bits e.g.
 	    foreach( $bits as $tag => $template )
 	    {
 		    $templateContent = file_get_contents( $template );
@@ -58,7 +58,7 @@ class template {
      */
     private function replaceTags( $pp = false )
     {
-	    // get the tags in the page
+	   	// get the tags in the page
 	    if( $pp == false )
 	    {
 		     $tags = $this->page->getTags();
@@ -68,10 +68,10 @@ class template {
 		     $tags = $this->page->getPPTags();
 	    }
 	   
-	    // go through them all
+	   	// go through them all
 	    foreach( $tags as $tag => $data )
 	    {
-		    // if the tag is an array, then we need to do more than a simple find and replace!
+		  	 // if the tag is an array, then we need to do more than a simple find and replace!
 		    if( is_array( $data ) )
 		    {
 			  
@@ -88,9 +88,9 @@ class template {
 	    	}
 	    	else
 	    	{	
-		    	// replace the content	    	
+		  	 	// replace the content	    	
 		    	$newContent = str_replace( '{' . $tag . '}', $data, $this->page->getContent() );
-		    	// update the pages content
+		  	 	// update the pages content
 		    	$this->page->setContent( $newContent );
 	    	}
 	    }

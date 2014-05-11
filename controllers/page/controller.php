@@ -20,7 +20,6 @@ class Pagecontroller {
 		$this->model = new Pagemodel( $this->registry, $this->registry->getURLPath() );
 		if( $this->model->isValid() )
 		{
-			echo "is valid";
 			$pageData = $this->model->getProperties();
 			$this->registry->getObject('template')->buildFromTemplates('header.tpl.php', 'main.tpl.php', 'footer.tpl.php');
 			$this->registry->getObject('template')->dataToTags( $pageData, '' );
@@ -29,14 +28,13 @@ class Pagecontroller {
 		}
 		else
 		{
-						echo "is NOT valid";
 			$this->pageNotFound();
 		}
 	}
 	
 	private function pageNotFound()
 	{
-		$this->registry->getObject('template')->buildFromTemplates('header.tpl.php', '404.tpl.php', 'footer.tpl.php');
+		$this->registry->getObject('template')->buildFromTemplates('header_books.tpl.php', '404.tpl.php', 'footer.tpl.php');
 	}
 	
 	private function pageRequiresLogin()
