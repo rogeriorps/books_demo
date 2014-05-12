@@ -242,24 +242,28 @@ class Productscontroller{
 			$searchPhrase = $this->registry->getObject('db')->sanitizeData( $_POST['product_search'] );
 			$this->registry->getObject('template')->getPage()->addTag( 'query', $_POST['product_search'] );
 			// perform the search, and cache the results, ready for the results template
-			$sql = "SELECT v.name, c.path, IF(v.name LIKE '%{$searchPhrase}%', 0, 1) as priority, IF(v.content LIKE '%{$searchPhrase}%', 0, 1) as priorityb FROM content c, content_versions v, content_types t WHERE v.ID=c.current_revision AND c.type=t.ID AND t.reference='product' AND c.active=1 AND ( v.name LIKE '%{$searchPhrase}%' OR v.content LIKE '%{$searchPhrase}%' ) ORDER BY priority, priorityb ";
+			$sql = "SELECT v.name as product_name, c.path, IF(v.name LIKE '%{$searchPhrase}%', 0, 1) as priority, IF(v.content LIKE '%{$searchPhrase}%', 0, 1) as priorityb FROM content c, content_versions v, content_types t WHERE v.ID=c.current_revision AND c.type=t.ID AND t.reference='product' AND c.active=1 AND ( v.name LIKE '%{$searchPhrase}%' OR v.content LIKE '%{$searchPhrase}%' ) ORDER BY priority, priorityb ";
 			$cache = $this->registry->getObject('db')->cacheQuery( $sql );
 			if( $this->registry->getObject('db')->numRowsFromCache( $cache ) == 0 )
 			{
 			// no results from the cached query, display the no results template
+				echo "Não encontramos seu livro";
 			}
 			else
 			{
 			// some results were found, display them on the results page
 			// IMPROVEMENT: paginated results
 				$this->registry->getObject('template')->getPage()->addTag( 'results', array( 'SQL', $cache ) );
-				$this->registry->getObject('template')->buildFromTemplates('header.tpl.php', 'products-searchresults.tpl.php', 'footer.tpl.php');
+			//	$this->registry->getObject('template')->getPage()->addTag( 'product_name', array( 'SQL', $cache ) );
+		
+				$this->registry->getObject('template')->getPage()->addTag( 'testtag', 'uauuuu' );
+				$this->registry->getObject('template')->buildFromTemplates('header_books.tpl.php', 'products-searchresults.tpl.php', 'footer.tpl.php');
 			}
 		}
 		else
 		{
 			// search form not submitted, so just display the search box page 
-			$this->registry->getObject('template')->buildFromTemplates('header.tpl.php', 'products-searchform.tpl.php', 'footer.tpl.php');
+			$this->registry->getObject('template')->buildFromTemplates('header_books.tpl.php', 'products-searchform.tpl.php', 'footer.tpl.php');
 		}
 	}
 	
