@@ -242,7 +242,7 @@ class Productscontroller{
 			$searchPhrase = $this->registry->getObject('db')->sanitizeData( $_POST['product_search'] );
 			$this->registry->getObject('template')->getPage()->addTag( 'query', $_POST['product_search'] );
 			// perform the search, and cache the results, ready for the results template
-			$sql = "SELECT v.name, c.path, IF(v.name LIKE '%{$searchPhrase}%', 0, 1) as priority, IF(v.content LIKE '%{$searchPhrase}%', 0, 1) as priorityb FROM content c, content_versions v, content_types t WHERE v.ID=c.current_revision AND c.type=t.ID AND t.reference='product' AND c.active=1 AND ( v.name LIKE '%{$searchPhrase}%' OR v.content LIKE '%{$searchPhrase}%' ) ORDER BY priority, priorityb ";
+			$sql = "SELECT v.name as product_name, c.path, IF(v.name LIKE '%{$searchPhrase}%', 0, 1) as priority, IF(v.content LIKE '%{$searchPhrase}%', 0, 1) as priorityb FROM content c, content_versions v, content_types t WHERE v.ID=c.current_revision AND c.type=t.ID AND t.reference='product' AND c.active=1 AND ( v.name LIKE '%{$searchPhrase}%' OR v.content LIKE '%{$searchPhrase}%' ) ORDER BY priority, priorityb ";
 			$cache = $this->registry->getObject('db')->cacheQuery( $sql );
 			if( $this->registry->getObject('db')->numRowsFromCache( $cache ) == 0 )
 			{
