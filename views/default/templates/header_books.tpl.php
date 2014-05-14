@@ -15,26 +15,18 @@
 <table>
 	<tr>
 		<td>
-
-			<form action="products/search" method="post">
-			<label for="product_search">Busque sue livro</label><input type="text" id="product_search" name="product_search" />
-			<input type="submit" id="search" name="search" value="Search" />
-			</form>
-		</td>
-		<td>
-		
 		<div id="search">
 			<form action="products/search" method="post">
-			<label for="product_search">Search for a product</label><input type="text" id="product_search" name="product_search" />
+			<label for="product_search">Procure seu livro</label><input type="text" id="product_search" name="product_search" />
 			<input type="submit" id="search" name="search" value="Search" />
 			</form>
 		</div>
-<!--			<form action="login_action" method="post">
+		</td>
+		<td>
+			<form action="login_action" method="post">
 			<label for="login_label">Login</label><input type="text" id="login_id" name="login_name" />
 			<input type="submit" id="login" name="login" value="Login" />
 			</form>
-		-->
-		
 		</td>
 	</tr>
 </table>

@@ -74,7 +74,6 @@ class template {
 		  	 // if the tag is an array, then we need to do more than a simple find and replace!
 		    if( is_array( $data ) )
 		    {
-			  
 			    if( $data[0] == 'SQL' )
 			    {
 				    // it is a cached query...replace tags from the database

@@ -3,8 +3,7 @@
 <!-- START products -->
 <li><a href="products/view/{product_path}">{product_name}</a></li>
 <!-- END products -->
-</ul>
-
+</ul> 
 <!-- START filter_attribute_types -->
 <h3>{filter_attr_name} {filter_attr_reference}</h3>
 <ul>

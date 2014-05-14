@@ -74,7 +74,7 @@ class template {
 		  	 // if the tag is an array, then we need to do more than a simple find and replace!
 		    if( is_array( $data ) )
 		    {
-			  
+				echo "array - " . $data[2] . " - ";			  	
 			    if( $data[0] == 'SQL' )
 			    {
 				    // it is a cached query...replace tags from the database
@@ -88,6 +88,7 @@ class template {
 	    	}
 	    	else
 	    	{	
+	    		echo "arroy - ";
 		  	 	// replace the content	    	
 		    	$newContent = str_replace( '{' . $tag . '}', $data, $this->page->getContent() );
 		  	 	// update the pages content

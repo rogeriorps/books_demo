@@ -1,10 +1,6 @@
 <?php
-/**
+/*
  * Authentication manager
- * 
- *
- * @version 1.0
- * @author Michael Peacock
  */
 class authentication {
 

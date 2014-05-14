@@ -14,6 +14,7 @@ class Useraccountcontroller {
 		$this->registry = $registry;
 		if( $this->registry->getObject('authenticate')->isLoggedIn() == true )
 		{
+			echo "logged in";
 			$urlBits = $this->registry->getURLBits();
 			if( !isset( $urlBits[1] ) )
 			{
@@ -48,6 +49,7 @@ class Useraccountcontroller {
 		}
 		else
 		{
+			echo "not logged in";
 			$this->registry->getObject('template')->buildFromTemplates('header.tpl.php', 'message.tpl.php','footer.tpl.php');
 			$this->registry->getObject('template')->getPage()->addTag('header', 'Please login' );
 			$this->registry->getObject('template')->getPage()->addTag('message', 'Sorry, only logged in users can manage their accounts' );
