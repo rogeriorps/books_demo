@@ -18,8 +18,11 @@ class Checkoutcontroller {
 		$this->basket->checkBasket();
 		if( $directCall == true )
 		{
-			if( $this->authenticationCheck() )
+                        echo "Direct CAll ";
+			//if( $this->checkNewUser() )
+                        if( $this->checkNewUser() && $this->authenticationCheck())
 			{
+                                echo "Autenticado  ";
 				if( $this->basket->isEmpty() )
 				{
 					$this->registry->getObject('template')->buildFromTemplates('header.tpl.php', 'message.tpl.php','footer.tpl.php');
@@ -59,6 +62,8 @@ class Checkoutcontroller {
 				}
 				
 			}
+                        echo "nao passou pelo Autenticado  ";
+
 
 		}
 	}
@@ -298,6 +303,21 @@ class Checkoutcontroller {
 		}
 	}
 
+        private function checkNewUser()
+        {
+            if( $this->registry->getObject('authenticate')->addNewUser() == true )
+		{
+					
+			return true;
+		}
+		else
+		{
+			$this->registry->getObject('template')->buildFromTemplates('header.tpl.php', 'checkout/loginreg.tpl.php','footer.tpl.php');
+			$this->registry->getObject('template')->getPage()->addTag('pagetitle', 'Login or sign up' );
+
+                    return false;
+		}
+        }
 
 }
 

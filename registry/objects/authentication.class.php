@@ -19,6 +19,23 @@ class authentication {
 		
     }
     
+    public function addNewUser()
+    {
+        if( isset(  $_POST['register_user'] ) &&  isset(  $_POST['register_pass'] ))
+    	{
+            echo "estou setado !!! New User! ";
+            echo $_POST['register_user'];
+            //$sql = "SELECT u.ID, u.username, u.email, u.admin, u.banned, u.active, u.name, (SELECT GROUP_CONCAT( g.name SEPARATOR '-groupsep-' ) FROM groups g, group_memberships gm WHERE g.ID = gm.group AND gm.user = u.ID ) AS groupmemberships FROM users u WHERE u.username='{$u}' AND u.password_hash='{$p}'";
+            //PHPEcommerceFrameworkRegistry::getObject('db')->executeQuery( $sql );
+    	
+            return true;
+        }
+        else {
+             echo " Nao estou setado !!! New User! ";   
+        return false;
+        }
+    }
+    
     public function checkForAuthentication()
     {
     	

@@ -1,3 +1,6 @@
+<ul>
+<li>{product_name}</li>
+</ul>
 <h2>Products found...</h2>
 <p>The following products were found, matching your search for {query}.</p>
 <ul>
