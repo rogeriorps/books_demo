@@ -23,10 +23,12 @@
 		</div>
 		</td>
 		<td>
-			<form action="login_action" method="post">
-			<label for="login_label">Login</label><input type="text" id="login_id" name="login_name" />
-			<input type="submit" id="login" name="login" value="Login" />
+			<form action="" method="post">
+			<input type="text" id="register_user" name="register_user" />
+			<input type="password" id="register_pass" name="register_pass" />
+			<input type="submit" name="Login" id="Login" />
 			</form>
+			Registre-se
 		</td>
 	</tr>
 </table>
