@@ -12,11 +12,11 @@ class Useraccountcontroller {
 	public function __construct( PHPEcommerceFrameworkRegistry $registry, $directCall )
 	{
 		$this->registry = $registry;
+                                                $urlBits = $this->registry->getURLBits();
 		if( $this->registry->getObject('authenticate')->isLoggedIn() == true )
 		{
 			echo "logged in";
-			$urlBits = $this->registry->getURLBits();
-			if( !isset( $urlBits[1] ) )
+                                                                        if( !isset( $urlBits[1] ) )
 			{
 				$this->mainUI();
 			}
@@ -48,14 +48,22 @@ class Useraccountcontroller {
 			}
 		}
 		else
-		{
-			echo "not logged in";
-			$this->registry->getObject('template')->buildFromTemplates('header.tpl.php', 'message.tpl.php','footer.tpl.php');
-			$this->registry->getObject('template')->getPage()->addTag('header', 'Please login' );
-			$this->registry->getObject('template')->getPage()->addTag('message', 'Sorry, only logged in users can manage their accounts' );
-		}
+		{                       
+			if( $urlBits[1]=='register-user')
+                                                                        {
+                                                                              $this->registry->getObject('template')->buildFromTemplates('header_books.tpl.php', 'register.tpl.php','footer.tpl.php');
+                                                                             //   $this->registry->getObject('template')->getPage()->addTag('header', 'Please login' );
+                                                                              //  $this->registry->getObject('template')->getPage()->addTag('message', 'Sorry, only logged in users can manage their accounts' );
+                                		}
+                                                                        else
+                                                                         {
+                                                                                $this->registry->getObject('template')->buildFromTemplates('header.tpl.php', 'message.tpl.php','footer.tpl.php');
+                                                                                $this->registry->getObject('template')->getPage()->addTag('header', 'Please login' );
+                                                                                $this->registry->getObject('template')->getPage()->addTag('message', 'Sorry, only logged in users can manage their accounts' );
+                                		}
 		
-	}
+                                                }   
+        }
 	
 	private function mainUI()
 	{

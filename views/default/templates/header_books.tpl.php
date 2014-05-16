@@ -28,7 +28,7 @@
 			<input type="password" id="register_pass" name="register_pass" />
 			<input type="submit" name="Login" id="Login" />
 			</form>
-			Registre-se
+			<a href="useraccount/register-user">Registre-se</a>
 		</td>
 	</tr>
 </table>
