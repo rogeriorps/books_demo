@@ -34,7 +34,12 @@ class Pagecontroller {
 	
 	private function pageNotFound()
 	{
+                                    if( $this->registry->getObject('authenticate')->isLoggedIn() == true ) {
+		$this->registry->getObject('template')->buildFromTemplates('header_books_logged.tpl.php', '404.tpl.php', 'footer.tpl.php');
+                                    }
+                                    else { 
 		$this->registry->getObject('template')->buildFromTemplates('header_books.tpl.php', '404.tpl.php', 'footer.tpl.php');
+                                    }
 	}
 	
 	private function pageRequiresLogin()

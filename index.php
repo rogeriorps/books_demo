@@ -3,8 +3,6 @@
  * PHPEcommerceFramework
  * Framework loader - acts as a single point of access to the Framework
  *
- * @version 1.0
- * @author Michael Peacock
  */
  
 // first and foremost, start our sessions
@@ -43,12 +41,12 @@ $registry->getObject('authenticate')->checkForAuthentication();
 $registry->storeSetting('default', 'skin');
 $registry->storeSetting(1, 'default_shipping_method');
 // populate our page object from a template file
-$registry->getObject('template')->buildFromTemplates('header_books.tpl.php');//,'main.tpl.php');
+//$registry->getObject('template')->buildFromTemplates('header_books.tpl.php');//,'main.tpl.php');
 
 // basket
-require_once('controllers/basket/controller.php');
-$basket = new Basketcontroller( $registry, false );
-$basket->smallBasket();
+//require_once('controllers/basket/controller.php');
+//$basket = new Basketcontroller( $registry, false );
+//$basket->smallBasket();
 
 $activeControllers = array();
 $registry->getObject('db')->executeQuery('SELECT controller FROM controllers WHERE active=1');

@@ -11,7 +11,7 @@
 <body>
 <div id="wrapper">
 <div id="searcha">
-
+    
 <table>
 	<tr>
 		<td>
@@ -23,17 +23,16 @@
 		</div>
 		</td>
 		<td>
+
 			<form action="" method="post">
-			<input type="text" id="register_user" name="register_user" />
-			<input type="password" id="register_pass" name="register_pass" />
+			<input type="text" name="ecomf_auth_user" />
+			<input type="password"  name="ecomf_auth_pass" />
 			<input type="submit" name="Login" id="Login" />
 			</form>
 			<a href="useraccount/register-user">Registre-se</a>
 		</td>
 	</tr>
 </table>
-
-
 </div>
 {basket}
 <!--

@@ -41,13 +41,15 @@ class authentication {
     	
     	if( isset( $_SESSION['phpecomf_auth_session_uid'] ) && intval( $_SESSION['phpecomf_auth_session_uid'] ) > 0 )
     	{
+                                                echo "1";
     		$this->sessionAuthenticate( intval( $_SESSION['phpecomf_auth_session_uid'] ) );
     	}
     	elseif( isset(  $_POST['ecomf_auth_user'] ) &&  $_POST['ecomf_auth_user'] != '' && isset( $_POST['ecomf_auth_pass'] ) && $_POST['ecomf_auth_pass'] != '')
     	{
     		$this->postAuthenticate( PHPEcommerceFrameworkRegistry::getObject('db')->sanitizeData( $_POST['ecomf_auth_user'] ), md5( $_POST['ecomf_auth_pass'] ) );
+                                                echo "2";
     	}
-	     //echo $this->userID;
+	     echo "User ID = " . $this->loggedIn;
     }
     
     private function sessionAuthenticate( $uid )
@@ -137,6 +139,8 @@ class authentication {
     function logout() 
 	{
 		$_SESSION['phpecomf_auth_session_uid'] = '';
+                    		$this->loggedIn = false;
+    		$this->loginFailureReason = 'nouser';
 	}
     
     

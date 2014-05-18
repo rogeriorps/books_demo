@@ -39,7 +39,10 @@ class Useraccountcontroller {
 						break;
 					case 'confirm-cancel-order':
 						$this->confirmCancelOrder( intval(  $urlBits[2] ) );
-						break;		
+						break;	
+                                            				case 'logout':
+                                                                                                                                                $this->logOut();
+						break;	
 					default:
 						$this->mainUI();
 						break;				
@@ -67,13 +70,24 @@ class Useraccountcontroller {
 	
 	private function mainUI()
 	{
-		$this->registry->getObject('template')->buildFromTemplates('header.tpl.php', 'account/account.tpl.php','footer.tpl.php');
+		echo "main UI";
+                                                $this->registry->getObject('template')->buildFromTemplates('header.tpl.php', 'account/account.tpl.php','footer.tpl.php');
 		$sql = "SELECT e.*, u.email FROM users_extra e, users u WHERE e.user_id=u.ID and u.ID=" .  $this->registry->getObject('authenticate')->getUserID();
 		$this->registry->getObject('db')->executeQuery( $sql );
 		$this->registry->getObject('template')->dataToTags( $this->registry->getObject('db')->getRows(), '');
 		$this->listOrders();
 	}
 	
+                        private function logOut()
+                        {
+                                    echo "logOut function";
+                                    $this->registry->getObject('authenticate')->logout();
+                                    $this->registry->getObject('template')->buildFromTemplates('header_books.tpl.php', 'main.tpl.php','footer.tpl.php');
+                                    echo "Logged ??? = ". $this->registry->getObject('authenticate')->isLoggedIn() ;
+                                    $this->registry->redirectUser( '/', 'Invalid order', 'Obrigado pela visita', $admin = false );
+                                    
+                        }
+        
 	private function listOrders()
 	{
 		$sql = "SELECT os.name as status_name, o.ID as order_id, (o.products_cost + o.shipping_cost) as cost, DATE_FORMAT(o.timestamp, '%D %b %Y') as order_placed FROM orders o, order_statuses os WHERE os.ID=o.status AND o.user_id=" . $this->registry->getObject('authenticate')->getUserID();
