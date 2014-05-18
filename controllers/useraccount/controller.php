@@ -15,7 +15,6 @@ class Useraccountcontroller {
                                                 $urlBits = $this->registry->getURLBits();
 		if( $this->registry->getObject('authenticate')->isLoggedIn() == true )
 		{
-			echo "logged in";
                                                                         if( !isset( $urlBits[1] ) )
 			{
 				$this->mainUI();
@@ -80,10 +79,8 @@ class Useraccountcontroller {
 	
                         private function logOut()
                         {
-                                    echo "logOut function";
                                     $this->registry->getObject('authenticate')->logout();
                                     $this->registry->getObject('template')->buildFromTemplates('header_books.tpl.php', 'main.tpl.php','footer.tpl.php');
-                                    echo "Logged ??? = ". $this->registry->getObject('authenticate')->isLoggedIn() ;
                                     $this->registry->redirectUser( '/', 'Invalid order', 'Obrigado pela visita', $admin = false );
                                     
                         }
