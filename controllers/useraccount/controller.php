@@ -53,9 +53,15 @@ class Useraccountcontroller {
 		{                       
 			if( $urlBits[1]=='register-user')
                                                                         {
+                                                                               if($_POST['reg_flag']==1) {
+                                                                                   echo"flag = 1";
+                                                                               }
+                                                                               else {
+                                                                                   
                                                                               $this->registry->getObject('template')->buildFromTemplates('header_books.tpl.php', 'register.tpl.php','footer.tpl.php');
                                                                              //   $this->registry->getObject('template')->getPage()->addTag('header', 'Please login' );
                                                                               //  $this->registry->getObject('template')->getPage()->addTag('message', 'Sorry, only logged in users can manage their accounts' );
+                                                                               }
                                 		}
                                                                         else
                                                                          {
