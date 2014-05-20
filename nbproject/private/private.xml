@@ -4,10 +4,9 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/home/rogerio/book/index.php</file>
-            <file>file:/home/rogerio/book/controllers/products/controller.php</file>
             <file>file:/home/rogerio/book/registry/registry.class.php</file>
             <file>file:/home/rogerio/book/controllers/useraccount/controller.php</file>
-            <file>file:/home/rogerio/book/controllers/page/controller.php</file>
+            <file>file:/home/rogerio/book/views/default/templates/register.tpl.php</file>
             <file>file:/home/rogerio/book/registry/objects/authentication.class.php</file>
         </group>
     </open-files>

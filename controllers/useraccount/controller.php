@@ -51,28 +51,47 @@ class Useraccountcontroller {
 		}
 		else
 		{                       
-			if( $urlBits[1]=='register-user')
-                                                                        {
-                                                                               if($_POST['reg_flag']==1) {
-                                                                                   echo"flag = 1";
-                                                                               }
-                                                                               else {
-                                                                                   
-                                                                              $this->registry->getObject('template')->buildFromTemplates('header_books.tpl.php', 'register.tpl.php','footer.tpl.php');
-                                                                             //   $this->registry->getObject('template')->getPage()->addTag('header', 'Please login' );
-                                                                              //  $this->registry->getObject('template')->getPage()->addTag('message', 'Sorry, only logged in users can manage their accounts' );
-                                                                               }
+                                                            if( $urlBits[1]=='register-user')
+                                                            {
+                                                                        if(!isset($_POST['reg_flag'])) {   //first time register page
+                                                                                    $this->registry->getObject('template')->buildFromTemplates('header_books.tpl.php', 'register.tpl.php','footer.tpl.php');
+                                                                                     //   $this->registry->getObject('template')->getPage()->addTag('header', 'Please login' );
+                                                                                     //  $this->registry->getObject('template')->getPage()->addTag('message', 'Sorry, only logged in users can manage their accounts' );
+                                                                        }
+                                                                        else { // second time user register - register error
+                                                                                    if($this->validateNewUser()==0) {
+                                                                                                $this->welcomeNewUser();
+                                                                                    }
+                                                                                    else {
+                                                                                                echo "nao valido!" . 0xa1;
+                                                                                    }
+                                                                        }
+                                                            }
+                                                            else  {
+                                                                        $this->registry->getObject('template')->buildFromTemplates('header.tpl.php', 'message.tpl.php','footer.tpl.php');
+                                                                        $this->registry->getObject('template')->getPage()->addTag('header', 'Please login' );
+                                                                        $this->registry->getObject('template')->getPage()->addTag('message', 'Sorry, only logged in users can manage their accounts' );
                                 		}
-                                                                        else
-                                                                         {
-                                                                                $this->registry->getObject('template')->buildFromTemplates('header.tpl.php', 'message.tpl.php','footer.tpl.php');
-                                                                                $this->registry->getObject('template')->getPage()->addTag('header', 'Please login' );
-                                                                                $this->registry->getObject('template')->getPage()->addTag('message', 'Sorry, only logged in users can manage their accounts' );
-                                		}
-		
                                                 }   
-        }
+                        }
 	
+                        private function validateNewUser()
+                        {
+                            if($_POST['user_password'] !=$_POST['user_password_confirm']) {
+                                    return 1;
+                            }
+                            return 0;
+                            
+                        }
+                        
+                        private function welcomeNewUser()
+                        {
+                                    echo"Bem vindo novo usuario!!!";
+                            
+                            return 0;
+                            
+                        }
+                        
 	private function mainUI()
 	{
 		echo "main UI";
