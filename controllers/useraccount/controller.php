@@ -61,7 +61,7 @@ class Useraccountcontroller {
                                                                         }
                                                                         else { // second time user register - register error
                                                                                     if($this->validateNewUser()==0) {
-                                                                                                $this->welcomeNewUser();
+                                                                                                $this->registerNewUser();
                                                                                     }
                                                                                     else {
                                                                                                 echo "nao valido!" . $this->uservalidation;
@@ -87,9 +87,17 @@ class Useraccountcontroller {
                             
                         }
                         
-                        private function welcomeNewUser()
+                        private function registerNewUser()
                         {
-                                    echo"Bem vindo novo usuario!!!";
+                                    $user = array();
+                                    $user['username'] = $_POST['user_username'];
+                                    $user['password_hash'] = md5($_POST['user_password']);
+                                    $user['email'] = $_POST['user_email'];
+                                    $user['name'] = $_POST['user_name'];
+                                    $user['active'] = true;
+                                    
+                                    $this->registry->getObject('db')->insertRecords( 'users', $user );
+                                    echo"Bem vindo(a) " . $user['name']  ." !!!";
                             
                            // return 0;
                             
