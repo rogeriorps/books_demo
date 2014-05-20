@@ -7,6 +7,7 @@ class Useraccountcontroller {
 	 */
 	private $registry;
 	private $order;
+                        private $uservalidation;
 	
 	
 	public function __construct( PHPEcommerceFrameworkRegistry $registry, $directCall )
@@ -63,7 +64,7 @@ class Useraccountcontroller {
                                                                                                 $this->welcomeNewUser();
                                                                                     }
                                                                                     else {
-                                                                                                echo "nao valido!" . 0xa1;
+                                                                                                echo "nao valido!" . $this->uservalidation;
                                                                                     }
                                                                         }
                                                             }
@@ -77,10 +78,12 @@ class Useraccountcontroller {
 	
                         private function validateNewUser()
                         {
-                            if($_POST['user_password'] !=$_POST['user_password_confirm']) {
-                                    return 1;
-                            }
-                            return 0;
+                                    $this->uservalidation = 0;
+                                    if($_POST['user_password'] !=$_POST['user_password_confirm']) {
+                                               $this->uservalidation |= 0x01;
+                                    }
+                                    
+                                    return $this->uservalidation;
                             
                         }
                         
@@ -88,7 +91,7 @@ class Useraccountcontroller {
                         {
                                     echo"Bem vindo novo usuario!!!";
                             
-                            return 0;
+                           // return 0;
                             
                         }
                         
