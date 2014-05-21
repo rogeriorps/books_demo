@@ -34,7 +34,7 @@
 	</tr>
 </table>
 </div>
-{basket}
+
 <!--
 #<table>
 #	<tr>

@@ -20,11 +20,15 @@ class Pagecontroller {
 		$this->model = new Pagemodel( $this->registry, $this->registry->getURLPath() );
 		if( $this->model->isValid() )
 		{
-			$pageData = $this->model->getProperties();
-			$this->registry->getObject('template')->buildFromTemplates('header.tpl.php', 'main.tpl.php', 'footer.tpl.php');
-			$this->registry->getObject('template')->dataToTags( $pageData, '' );
-			$this->registry->getObject('template')->getPage()->setTitle( $pageData['title'] );
-			
+                                                            $pageData = $this->model->getProperties();
+                                                            if( $this->registry->getObject('authenticate')->isLoggedIn() == true ) {
+                                                                        $this->registry->getObject('template')->buildFromTemplates('header_books_logged.tpl.php', 'main.tpl.php', 'footer.tpl.php');
+                                                            }
+                                                            else {
+                                                                        $this->registry->getObject('template')->buildFromTemplates('header_books.tpl.php', 'main.tpl.php', 'footer.tpl.php');
+                                                            }
+                                                $this->registry->getObject('template')->dataToTags( $pageData, '' );
+		$this->registry->getObject('template')->getPage()->setTitle( $pageData['title'] );
 		}
 		else
 		{

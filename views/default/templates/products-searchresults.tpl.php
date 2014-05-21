@@ -1,8 +1,5 @@
-<ul>
-<li>{product_name}</li>
-</ul>
-<h2>Products found...</h2>
-<p>The following products were found, matching your search for {query}.</p>
+<h2>Livros encontrados...</h2>
+
 <ul>
 <!-- START results -->
 <li><a href="products/view/{product_path}">{product_name} {query}</a></li>
