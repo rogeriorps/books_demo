@@ -10,17 +10,16 @@
 </head> 
 <body>
 <div id="wrapper">
-<div id="searcha">
+<div id="header">
+<div id="search">
     
 <table>
 	<tr>
 		<td>
-		<div id="search">
 			<form action="products/search" method="post">
 			<label for="product_search">Procure seu livro</label><input type="text" id="product_search" name="product_search" />
 			<input type="submit" id="search" name="search" value="Search" />
 			</form>
-		</div>
 		</td>
 		<td>
 
@@ -33,7 +32,9 @@
 		</td>
 	</tr>
 </table>
-</div>
+    </div>      <!--   end div header  -->
+</div>      <!--   end div search  -->
+
 
 <!--
 #<table>

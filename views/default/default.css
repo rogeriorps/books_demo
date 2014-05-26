@@ -1,2 +1,25 @@
 body{} 
-#wrapper{ width: 1024px; margin:0 auto;background: orange;}
+#wrapper{   width: 1800px; 
+                            margin: 0 auto;
+                            background: orange;}
+
+#header{      width: 1024px;
+                            height: 300px;
+                            position: absolute;
+                            margin-left: auto;
+                            margin-right: auto;
+                            background: red;}
+
+#main{            width: 1024px; 
+                            height: 500px;
+                            margin-top: 301px;
+                            margin-left: auto;
+                            margin-right: auto;
+                            background: blue;}
+
+#footer{       width: 1024px;
+                            top: 1024px;
+                            left: 0;
+                            margin-left: auto;
+                            margin-right: auto;
+                            background: darkblue;}
