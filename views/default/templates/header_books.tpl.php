@@ -9,7 +9,7 @@
 	<link rel="stylesheet" type="text/css" href="views/default/default.css" />
 </head> 
 <body>
-<div id="wrapper">
+
 <div id="header">
 <div id="search">
     
