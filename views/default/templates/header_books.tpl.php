@@ -10,7 +10,13 @@
 </head> 
 <body>
 
+<div id="topsite">
 <div id="header">
+<div id="topblock1">
+</div>
+    
+    
+<div id="topblock2">
             <div id="searchform">
                         <form action="products/search" method="post">
 	<label for="product_search">Procure seu livro</label><input type="text" id="product_search" name="product_search" />
@@ -26,8 +32,9 @@
             </form>
             <a href="useraccount/register-user">Registre-se</a>
 </div>      <!--   end div login -->
-</div>      <!--   end div header  -->
-
+</div>      <!--   end div header -->
+</div>      <!--   end div topblock2  -->
+</div>      <!--   end div topsite  -->
 
 
 <!--

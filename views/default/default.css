@@ -5,11 +5,6 @@ body{}
                             background: orange;
                            }
 
-#header{      
-                            height: 100px;
-                            margin-bottom: 0px;
-                            background: red;
-                            }
 
 #main{            
                             width: 1024px; 
@@ -21,18 +16,36 @@ body{}
     
 #searchform{        background:cyan;
                             height: 80px;
-                            width: 450px;
-                            top:10px;
-                            left:100px;
-                            position: absolute;
+                            width: 100px;
                            }
 
 #login{            background: goldenrod;
                             height: 80px;
-                            width: 400px;
-                            top:10px;
-                            left:600px;   
-                            vertical-align: middle;
-                            box-sizing: border-box;
+                            width: 100px;
                             position: absolute;
 }
+
+#topsite {margin:0px;
+                        padding:0px;
+                        height:130px;
+                        width: 100%;}
+
+#header{margin:0px, auto;
+                        width:950px;
+                         margin:0px;
+                         padding:0px;
+                            }
+                            
+#topblock1{ display:block;
+                                height:68px;
+                         margin:0px;
+                         padding:0px;
+                         background: aquamarine;
+                            }                         
+
+#topblock2{ display:block;
+                                height:60px;
+                         margin:0px;
+                         padding:0px;
+                         background: darkolivegreen;
+                            }     
