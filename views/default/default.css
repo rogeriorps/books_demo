@@ -2,12 +2,14 @@ body{}
 
  #wrapper{   width: 1024px; 
                             margin: 0 auto;
-                            background: orange;}
+                            background: orange;
+                           }
 
 #header{      
                             height: 100px;
                             margin-bottom: 0px;
-                            background: red;}
+                            background: red;
+                            }
 
 #main{            
                             width: 1024px; 
@@ -17,3 +19,20 @@ body{}
 
 #footer{        background: darkblue;}
     
+#searchform{        background:cyan;
+                            height: 80px;
+                            width: 450px;
+                            top:10px;
+                            left:100px;
+                            position: absolute;
+                           }
+
+#login{            background: goldenrod;
+                            height: 80px;
+                            width: 400px;
+                            top:10px;
+                            left:600px;   
+                            vertical-align: middle;
+                            box-sizing: border-box;
+                            position: absolute;
+}

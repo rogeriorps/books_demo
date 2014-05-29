@@ -11,29 +11,23 @@
 <body>
 
 <div id="header">
-<div id="search">
-    
-<table>
-	<tr>
-		<td>
-			<form action="products/search" method="post">
-			<label for="product_search">Procure seu livro</label><input type="text" id="product_search" name="product_search" />
-			<input type="submit" id="search" name="search" value="Search" />
-			</form>
-		</td>
-		<td>
+            <div id="searchform">
+                        <form action="products/search" method="post">
+	<label for="product_search">Procure seu livro</label><input type="text" id="product_search" name="product_search" />
+	<input type="submit" id="search" name="search" value="Search" />
+	</form>
+            </div>      <!--   end div search  -->
 
-			<form action="" method="post">
-			<input type="text" name="ecomf_auth_user" />
-			<input type="password"  name="ecomf_auth_pass" />
-			<input type="submit" name="Login" id="Login" />
-			</form>
-			<a href="useraccount/register-user">Registre-se</a>
-		</td>
-	</tr>
-</table>
-    </div>      <!--   end div header  -->
-</div>      <!--   end div search  -->
+<div id="login">
+            <form action="" method="post">
+            <input type="text" name="ecomf_auth_user" />
+            <input type="password"  name="ecomf_auth_pass" />
+            <input type="submit" name="Login" id="Login" />
+            </form>
+            <a href="useraccount/register-user">Registre-se</a>
+</div>      <!--   end div login -->
+</div>      <!--   end div header  -->
+
 
 
 <!--
