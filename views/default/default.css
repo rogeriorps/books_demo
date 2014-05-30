@@ -1,38 +1,97 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+v2.0 | 20110126 License: none (public domain)*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center, dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	 margin: 0;
+	 padding: 0;
+	 border: 0;
+	 font-size: 100%;
+	 font: inherit;
+	 vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	 display: block;
+}
+body {
+	 line-height: 1;
+}
+ol, ul {
+	 list-style: none;
+}
+blockquote, q {
+	 quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	 content: ‘’;
+	 content: none;
+}
+table {
+	 border-collapse: collapse;
+	 border-spacing: 0;
+}
+
+
 body{}
 
  #wrapper{   width: 1024px; 
                             margin: 0 auto;
-                            background: orange;
+
                            }
 
 
 #main{            
                             width: 1024px; 
                             height: 100px;
-                            margin-top: -21px;
-                            background: blue;}
-
-#footer{        background: darkblue;}
-    
-#searchform{        background:cyan;
-                            height: 80px;
-                            width: 100px;
-                           }
-
-#login{            background: goldenrod;
-                            height: 80px;
-                            width: 100px;
-                            position: absolute;
+                            margin: 5px 0px 5px 0px;
+                            border: 1px solid #DFDFDF;
+border-radius: 10px;
+//background-color: #FFF;
 }
 
+/*border: 1px solid #DFDFDF;
+border-radius: 5px;
+background-color: #FFF;
+padding: 10px 5px;
+margin: 8px 0px; */
+
+
+#footer{        background: #0096AA;}
+
+#searchform {
+    height: 38px;
+    width: 460px;
+    float: left;
+    margin: 12px 0px 0px 40px;
+}
+#login {
+    height: 57px;
+    width: 360px;
+    margin: 0px 0px 10px 550px;
+    float: left;
+}
 #topsite {margin:0px;
                         padding:0px;
                         height:130px;
-                        width: 100%;}
+                        width: 100%;
+                        background: url('/images_site/back1_header.png') repeat-x scroll 0% 0% transparent;
+}
 
-#header{margin:0px, auto;
-                        width:950px;
-                         margin:0px;
+#header{ 
+                        margin: 0px auto;
+                        width:1024px;
                          padding:0px;
                             }
                             
@@ -40,12 +99,10 @@ body{}
                                 height:68px;
                          margin:0px;
                          padding:0px;
-                         background: aquamarine;
                             }                         
 
 #topblock2{ display:block;
-                                height:60px;
+                                height:62px;
                          margin:0px;
                          padding:0px;
-                         background: darkolivegreen;
                             }     
