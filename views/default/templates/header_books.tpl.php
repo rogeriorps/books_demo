@@ -14,10 +14,11 @@
 <div id="header">
 <div id="topblock1">
     <div id="login">
+        <a>Login</a>
             <form action="" method="post">
-            <input type="text" name="ecomf_auth_user" />
-            <input type="password"  name="ecomf_auth_pass" />
-            <input type="submit" name="Login" id="Login" />
+            <input type="text" name="ecomf_auth_user" id="ecomf_auth_user" placeholder="email"/>
+            <input type="password"  name="ecomf_auth_pass"  id="ecomf_auth_pass" placeholder="senha"/>
+            <input type="submit" name="Login" id="bt_login" />
             </form>
             <a href="useraccount/register-user">Registre-se</a>
 </div>      <!--   end div login -->

@@ -77,11 +77,12 @@ margin: 8px 0px; */
     margin: 12px 0px 0px 40px;
 }
 #login {
-    height: 57px;
-    width: 360px;
-    margin: 0px 0px 10px 550px;
-    float: left;
+height: 57px;
+width: 443px;
+margin: 8px 0px 10px 576px;
+float: left;
 }
+
 #topsite {margin:0px;
                         padding:0px;
                         height:130px;
@@ -107,3 +108,33 @@ margin: 8px 0px; */
                          margin:0px;
                          padding:0px;
                             }     
+                            
+ #ecomf_auth_user {
+    position: relative;
+display: inline;
+width: 158px;
+height: 15px;
+padding: 0px;
+margin-bottom: 0px;
+line-height: 20px;
+font-size: small;
+float: left;
+}                
+
+
+#ecomf_auth_pass {
+position: relative;
+display: inline;
+width: 158px;
+height: 15px;
+padding: 0px;
+margin-bottom: 0px;
+line-height: 20px;
+font-size: small;
+float: left;
+}   
+
+#bt_login {
+
+    float:right;
+}   
