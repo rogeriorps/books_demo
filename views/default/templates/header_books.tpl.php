@@ -13,15 +13,7 @@
 <div id="topsite">
 <div id="header">
 <div id="topblock1">
-    <div id="login">
-        <a>Login</a>
-            <form action="" method="post">
-            <input type="text" name="ecomf_auth_user" id="ecomf_auth_user" placeholder="email"/>
-            <input type="password"  name="ecomf_auth_pass"  id="ecomf_auth_pass" placeholder="senha"/>
-            <input type="submit" name="Login" id="bt_login" />
-            </form>
-            <a href="useraccount/register-user">Registre-se</a>
-</div>      <!--   end div login -->
+
 </div>
     
     
@@ -33,7 +25,15 @@
 	</form>
             </div>      <!--   end div search  -->
 
-
+    <div id="login">
+        <a>Login</a>
+            <form action="" method="post">
+            <input type="text" name="ecomf_auth_user" id="ecomf_auth_user" placeholder="email"/>
+            <input type="password"  name="ecomf_auth_pass"  id="ecomf_auth_pass" placeholder="senha"/>
+            <input type="submit" name="Login" id="bt_login" />
+            </form>
+            <a href="useraccount/register-user">Registre-se</a>
+</div>      <!--   end div login -->
 </div>      <!--   end div header -->
 </div>      <!--   end div topblock2  -->
 </div>      <!--   end div topsite  -->
