@@ -9,35 +9,28 @@
 	<link rel="stylesheet" type="text/css" href="views/default/default.css" />
 </head> 
 <body>
-<div id="wrapper">
-<div id="searcha">
 
-<table>
-	<tr>
-		<td>
-		<div id="search">
-			<form action="products/search" method="post">
-			<label for="product_search">Procure seu livro</label><input type="text" id="product_search" name="product_search" />
-			<input type="submit" id="search" name="search" value="Search" />
-			</form>
-		</div>
-		</td>
-		<td>
-                                                        Logged
-                                                        <a href="useraccount/logout">Logout</a>
-		</td>
-	</tr>
-</table>
-
+<div id="topsite">
+<div id="header">
+<div id="topblock1">
 
 </div>
+    
+    
+<div id="topblock2">
+            <div id="searchform">
+                        <form action="products/search" method="post">
+	<label for="product_search">Procure seu livro</label><input type="text" id="product_search" name="product_search" />
+	<input type="submit" id="search" name="search" value="Search" />
+	</form>
+            </div>      <!--   end div search  -->
 
-<!--
-#<table>
-#	<tr>
-#		<td>Product</td>
-#		<td>Quantity</td>
-#		<td>Cost</td>
-#		<td>Remove</td>
-#	</tr>
-#</table> -->
+    <div id="login">
+        <a> Logged </a>
+        <a href="useraccount/logout">Logout</a>
+</div>      <!--   end div login -->
+</div>      <!--   end div header -->
+</div>      <!--   end div topblock2  -->
+</div>      <!--   end div topsite  -->
+
+<div id="wrapper">

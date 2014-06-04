@@ -39,13 +39,3 @@
 </div>      <!--   end div topsite  -->
 
 <div id="wrapper">
-
-<!--
-#<table>
-#	<tr>
-#		<td>Product</td>
-#		<td>Quantity</td>
-#		<td>Cost</td>
-#		<td>Remove</td>
-#	</tr>
-#</table> -->
