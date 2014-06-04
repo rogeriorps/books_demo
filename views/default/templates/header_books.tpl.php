@@ -13,7 +13,15 @@
 <div id="topsite">
 <div id="header">
 <div id="topblock1">
+<div id="header_logo">
+<a  title="Dummy Image" href="/">
 
+    <img border="0" alt="Dummy Image" src="images_site/dummy_image.png"></img>
+
+</a>
+</div>
+
+   
 </div>
     
     
