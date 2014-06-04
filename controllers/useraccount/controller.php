@@ -105,8 +105,7 @@ class Useraccountcontroller {
                         
 	private function mainUI()
 	{
-		echo "main UI";
-                                                $this->registry->getObject('template')->buildFromTemplates('header.tpl.php', 'account/account.tpl.php','footer.tpl.php');
+                                                $this->registry->getObject('template')->buildFromTemplates('header_books_logged.tpl.php', 'account/account.tpl.php','footer.tpl.php');
 		$sql = "SELECT e.*, u.email FROM users_extra e, users u WHERE e.user_id=u.ID and u.ID=" .  $this->registry->getObject('authenticate')->getUserID();
 		$this->registry->getObject('db')->executeQuery( $sql );
 		$this->registry->getObject('template')->dataToTags( $this->registry->getObject('db')->getRows(), '');
