@@ -53,11 +53,12 @@ body{}
 
 
 #main{            
-                            width: 1024px; 
+                            width: 680px; 
                             height: 100px;
                             margin: 5px 0px 5px 0px;
                             border: 1px solid #DFDFDF;
 border-radius: 10px;
+ float: right;
 //background-color: #FFF;
 }
 
@@ -68,7 +69,8 @@ padding: 10px 5px;
 margin: 8px 0px; */
 
 
-#footer{        background: #0096AA;}
+#footer{        background: #0096AA;
+clear:left; }
 
 #searchform {
     height: 38px;
@@ -137,4 +139,13 @@ float: left;
 #bt_login {
 
     float:right;
+}   
+
+#category_menu {
+width: 30px; 
+                            height: 100px;
+                            margin: 5px 0px 5px 0px;
+                            border: 1px solid #DFDFDF;
+border-radius: 10px;
+ float: left;
 }   

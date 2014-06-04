@@ -38,6 +38,7 @@
 </div>      <!--   end div topblock2  -->
 </div>      <!--   end div topsite  -->
 
+<div id="wrapper">
 
 <!--
 #<table>
