@@ -1,27 +1,25 @@
 <?php
 
-class Product{
-	
-	private $registry;
-	private $ID;
-	private $name;
-	private $SKU;
+class Books{
+	private $bcid;
+	private $isbn;
+	private $title;
+	private $author1;
+	private $author2;
+	private $author3;
+	private $author4;
+	private $author5;
+	private $cover;
+	private $category1;
+	private $category2;
+	private $category3;
+	private $language;
+	private $pages;
+	private $hardcover_flag;
 	private $description;
-	private $price;
-	private $weight;
-	private $image;
-	private $stock;
-	private $heading;
-	private $metakeywords;
-	private $metadescription;
-	private $metarobots;
-	private $active;
-	private $secure;
-	private $hasAttributes = false;
-	private $activeProduct = false;
-	private $attributes = array();
-	private $allowUpload = false;
-	private $customTextInputs = '';
+	private $edition;
+	private $publisher;
+	private $year;
 	
 	public function __construct( PHPEcommerceFrameworkRegistry $registry, $productPath )
 	{
@@ -85,36 +83,6 @@ class Product{
 			// here we may want to do something else...
 		}
 		
-	}
-	
-	public function allowUploads()
-	{
-		return $this->allowUpload;
-	}
-	
-	public function getCustomTextInputs()
-	{
-		return $this->customTextInputs();
-	}
-	
-	public function hasCustomTextInputs()
-	{
-		return ( $this->customTextInputs != '' ) ? true : false;
-	}
-	
-	public function hasAttributes()
-	{
-		return $this->hasAttributes;
-	}
-	
-	public function getAttributes()
-	{
-		return $this->attributes;
-	}
-	
-	public function isValid()
-	{
-		return $this->activeProduct;
 	}
 	
 	public function getData()
