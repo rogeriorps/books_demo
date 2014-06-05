@@ -1,6 +1,6 @@
 <?php
 
-class Books{
+class Book{
 	private $bcid;
 	private $isbn;
 	private $title;
@@ -21,14 +21,14 @@ class Books{
 	private $publisher;
 	private $year;
 	
-	public function __construct( PHPEcommerceFrameworkRegistry $registry, $productPath )
+	public function __construct( PHPEcommerceFrameworkRegistry $registry, $bookPath )
 	{
 		$this->registry = $registry;
-		if( $productPath != '' )
+		if( $bookPath != '' )
 		{
-			$productPath = $this->registry->getObject('db')->sanitizeData( $productPath );
-			$productQuery = "SELECT v.name as product_name, c.ID as product_id, p.allow_upload as allow_upload, p.custom_text_inputs as custom_text_inputs, ( SELECT sum(rating)/count(*) FROM content_ratings WHERE contentID=c.ID ) as rating, (SELECT GROUP_CONCAT( a.name,'--AV--', av.ID, '--AV--', av.name SEPARATOR '---ATTR---' ) FROM product_attribute_values av, product_attribute_value_association ava, product_attributes a WHERE a.ID = av.attribute_id AND av.ID=ava.attribute_id AND ava.product_id=c.ID ORDER BY ava.order ) AS attributes, p.image as product_image, p.stock as product_stock, p.weight as product_weight, p.price as product_price, p.SKU as product_sku, p.featured as product_featured, v.heading as product_heading, v.content as product_description, v.metakeywords as metakeywords, v.metarobots as metarobots, v.metadescription as metadescription FROM content_versions v, content c, content_types t, content_types_products p WHERE c.active=1 AND c.secure=0 AND c.type=t.ID AND t.reference='product' AND p.content_version=v.ID AND v.ID=c.current_revision AND c.path='{$productPath}'";
-			$this->registry->getObject('db')->executeQuery( $productQuery );
+			$bookPath = $this->registry->getObject('db')->sanitizeData( $bookPath );
+			$bookQuery = "SELECT v.name as product_name, c.ID as product_id, p.allow_upload as allow_upload, p.custom_text_inputs as custom_text_inputs, ( SELECT sum(rating)/count(*) FROM content_ratings WHERE contentID=c.ID ) as rating, (SELECT GROUP_CONCAT( a.name,'--AV--', av.ID, '--AV--', av.name SEPARATOR '---ATTR---' ) FROM product_attribute_values av, product_attribute_value_association ava, product_attributes a WHERE a.ID = av.attribute_id AND av.ID=ava.attribute_id AND ava.product_id=c.ID ORDER BY ava.order ) AS attributes, p.image as product_image, p.stock as product_stock, p.weight as product_weight, p.price as product_price, p.SKU as product_sku, p.featured as product_featured, v.heading as product_heading, v.content as product_description, v.metakeywords as metakeywords, v.metarobots as metarobots, v.metadescription as metadescription FROM content_versions v, content c, content_types t, content_types_products p WHERE c.active=1 AND c.secure=0 AND c.type=t.ID AND t.reference='product' AND p.content_version=v.ID AND v.ID=c.current_revision AND c.path='{$bookPath}'";
+			$this->registry->getObject('db')->executeQuery( $bookQuery );
 			if( $this->registry->getObject('db')->numRows() == 1 )
 			{
 				
@@ -54,24 +54,36 @@ class Books{
 				{
 					$this->allowUpload = true;
 				}
-				
-				
+
+                                                                                                $this->bcid = $data[''];
+                                                                                                $this->isbn = $data[''];
+                                                                                                $this->title = $data[''];
+                                                                                                $this->author1 = $data[''];
+                                                                                                $this->author2 = $data[''];
+                                                                                               $this->author3 = $data[''];
+                                                                                                $this->author4 = $data[''];
+                                                                                                $this->author5 = $data[''];
+                                                                                                $this->cover = $data[''];
+                                                                                                $this->category1 = $data[''];
+                                                                                                $this->category2 = $data[''];
+                                                                                                $this->category3 = $data[''];
+                                                                                                $this->language = $data[''];
+                                                                                                $this->pages = $data[''];
+                                                                                                $this->hardcover_flag = $data[''];
+                                                                                                $this->description = $data[''];
+                                                                                                $this->edition = $data[''];
+                                                                                                $this->publisher = $data[''];
+                                                                                                $this->year = $data[''];                                
+                                
 				$this->ID = $data['product_id'];
-				$this->name = $data['product_name'];
-				$this->price = $data['product_price'];
-				$this->weight = $data['product_weight'];
-				$this->image = $data['product_image'];
-				$this->heading = $data['product_heading'];
-				$this->description = $data['product_description'];
-				$this->SKU = $data['product_sku'];
-				$this->stock = $data['product_stock'];
-				// secure and active were set in the query, we will probably want to change this later
-				$this->secure = 0;
-				$this->active = 1;
-				$this->metakeywords = $data['metakeywords'];
-				$this->metadescription = $data['metadescription'];
-				$this->metarobots = $data['metarobots'];
-				if( $data['custom_text_inputs'] != '' )
+                                                                                                $this->ID = $data['product_id'];
+				$this->ID = $data['product_id'];
+				$this->ID = $data['product_id'];
+                                                                                                $this->ID = $data['product_id'];
+				$this->ID = $data['product_id'];
+
+                                
+                                                                                                if( $data['custom_text_inputs'] != '' )
 				{
 					$this->customTextInputs = unserialize( $data['custom_text_inputs'] );
 				}

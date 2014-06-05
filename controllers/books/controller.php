@@ -1,11 +1,11 @@
 <?php
 /**
- * Products Controller
+ * Books Controller
  * 
- * @author Michael Peacock
+ * @author Rogerio Pimentel
  * @version 1.0
  */
-class Productscontroller{
+class Bookscontroller{
 	
 	/**
 	 * Registry object reference
@@ -70,16 +70,16 @@ class Productscontroller{
 	}
 	
 	/**
-	 * View a product
+	 * View a book
 	 * @return void
 	 */
-	private function viewProduct()
+	private function viewBook()
 	{
 		
-		$pathToRemove = 'products/view/';
+		$pathToRemove = 'books/view/';
 		$productPath = str_replace( $pathToRemove, '', $this->registry->getURLPath() );
 		
-		require_once( FRAMEWORK_PATH . 'models/products/model.php');
+		require_once( FRAMEWORK_PATH . 'models/books/model.php');
 		$this->model = new Product( $this->registry, $productPath );
 		if( $this->model->isValid() )
 		{
