@@ -42,26 +42,26 @@ class Bookscontroller{
 		if( $directCall == true )
 		{
 			$urlBits = $this->registry->getURLBits();
-			$this->filterProducts( $urlBits );
+			$this->filterBooks( $urlBits );
 			if( !isset( $urlBits[1] ) )
 			{
-				$this->listProducts();
+				$this->listBooks();
 			}
 			else
 			{
 				switch( $urlBits[1] )
 				{
 					case 'view':
-						$this->viewProduct();
+						$this->viewBook();
 						break;
 					case 'stockalert':
 						$this->informCustomerWhenBackInStock();
 						break;	
 					case 'search':
-						$this->searchProducts();
+						$this->searchBooks();
 						break;
 					default:
-						$this->listProducts();
+						$this->listBooks();
 						break;		
 				}
 			}
@@ -77,113 +77,113 @@ class Bookscontroller{
 	{
 		
 		$pathToRemove = 'books/view/';
-		$productPath = str_replace( $pathToRemove, '', $this->registry->getURLPath() );
+		$bookPath = str_replace( $pathToRemove, '', $this->registry->getURLPath() );
 		
 		require_once( FRAMEWORK_PATH . 'models/books/model.php');
-		$this->model = new Product( $this->registry, $productPath );
+		$this->model = new Product( $this->registry, $bookPath );
 		if( $this->model->isValid() )
 		{
-			$productData = $this->model->getData();
-			if( $productData['stock'] == 0 )
-			{
-				$this->registry->getObject('template')->addTemplateBit( 'stock', 'outofstock.tpl.php' );
-			}
-			elseif( $productData['stock'] > 0 )
-			{
-				$this->registry->getObject('template')->addTemplateBit( 'stock', 'instock.tpl.php' );
-			}
-			else
-			{
-				$this->registry->getObject('template')->getPage()->addTag( 'stock', '' );
-			}
+			$bookData = $this->model->getData();
+			//if( $productData['stock'] == 0 )
+			//{
+			//	$this->registry->getObject('template')->addTemplateBit( 'stock', 'outofstock.tpl.php' );
+			//}
+			//elseif( $productData['stock'] > 0 )
+			//{
+			//	$this->registry->getObject('template')->addTemplateBit( 'stock', 'instock.tpl.php' );
+			//}
+			//else
+			//{
+			//	$this->registry->getObject('template')->getPage()->addTag( 'stock', '' );
+			//}
 			
-			$this->relatedProducts( $productData['ID'] );
-			$this->registry->getObject('template')->dataToTags( $productData, 'product_' );
-			$this->registry->getObject('template')->getPage()->addTag( 'product_path', $productPath );
-			$this->registry->getObject('template')->getPage()->addTag( 'metakeywords', $productData['metakeywords'] );
-			$this->registry->getObject('template')->getPage()->addTag( 'metadescription', $productData['metadescription'] );
-			$this->registry->getObject('template')->getPage()->addTag( 'metarobots', $productData['metarobots'] );
-			$this->registry->getObject('template')->getPage()->setTitle('Viewing product ' . $productData['name'] );
-			if( $this->model->hasAttributes() )
-			{
-				$attrdata = $this->model->getAttributes();
-				$attrs = array_keys( $attrdata );
-				$temp = array();
-				$aftertags =  array();
-				foreach( $attrs as $attribute )
-				{
-					$temp[] = array( 'attribute_name' => $attribute );
-					$vtemp = array();
-					foreach( $attrdata[ $attribute ] as $key => $value )
-					{
-						$vtemp[] = array('value_id'=> $value['attrid'], 'value_name'=>$value['attrvalue']);
-					}
-					$cache = $this->registry->getObject('db')->cacheData( $vtemp );
-					$aftertags[] = array( 'cache'=>$cache, 'tag' => 'values_' . $attribute);
-				}
-				$cache = $this->registry->getObject('db')->cacheData( $temp );
-				$this->registry->getObject('template')->getPage()->addTag( 'attributes', array('DATA', $cache ) );
-				foreach( $aftertags as $key => $data )
-				{
-					$this->registry->getObject('template')->getPage()->addTag( $data['tag'], array('DATA', $data['cache'] ) );
-				
-				}
-				if( $this->model->hasCustomTextInputs() )
-				{
-					if( $this->model->allowUploads() )
-					{
-						$fieldsdata = $this->model->getCustomTextInputs();
-						$tags = array();
-						foreach( $fieldsdata as $fieldkey => $name )
-						{
-							$tags[] = array('fieldkey' => $fieldkey, 'fieldname' => $name );
-						}
-						$cache = $this->registry->getObject('db')->cacheData( $tags );
-						$this->registry->getObject('template')->getPage()->addTag('fields', array( 'DATA', $cache ) );
-						$this->registry->getObject('template')->buildFromTemplates('header.tpl.php', 'product-attributes-custom-upload.tpl.php', 'footer.tpl.php');
-					}
-					else
-					{
-						$fieldsdata = $this->model->getCustomTextInputs();
-						$tags = array();
-						foreach( $fieldsdata as $fieldkey => $name )
-						{
-							$tags[] = array('fieldkey' => $fieldkey, 'fieldname' => $name );
-						}
-						$cache = $this->registry->getObject('db')->cacheData( $tags );
-						$this->registry->getObject('template')->getPage()->addTag('fields', array( 'DATA', $cache ) );
-						$this->registry->getObject('template')->buildFromTemplates('header.tpl.php', 'product-attributes-custom.tpl.php', 'footer.tpl.php');
-					}
-				}
-				elseif( $this->model->allowUploads() )
-				{
-					$this->registry->getObject('template')->buildFromTemplates('header.tpl.php', 'product-attributes-uploads.tpl.php', 'footer.tpl.php');
-				}
-				else
-				{
-					$this->registry->getObject('template')->buildFromTemplates('header.tpl.php', 'product-attributes.tpl.php', 'footer.tpl.php');
-				}
-				
-			}
-			else
-			{
+			//$this->relatedProducts( $productData['ID'] );
+			//$this->registry->getObject('template')->dataToTags( $productData, 'product_' );
+			//$this->registry->getObject('template')->getPage()->addTag( 'product_path', $productPath );
+			//$this->registry->getObject('template')->getPage()->addTag( 'metakeywords', $productData['metakeywords'] );
+			//$this->registry->getObject('template')->getPage()->addTag( 'metadescription', $productData['metadescription'] );
+			//$this->registry->getObject('template')->getPage()->addTag( 'metarobots', $productData['metarobots'] );
+			//$this->registry->getObject('template')->getPage()->setTitle('Viewing product ' . $productData['name'] );
+			//if( $this->model->hasAttributes() )
+			//{
+			//	$attrdata = $this->model->getAttributes();
+			//	$attrs = array_keys( $attrdata );
+			//	$temp = array();
+			//	$aftertags =  array();
+			//	foreach( $attrs as $attribute )
+			//	{
+			//		$temp[] = array( 'attribute_name' => $attribute );
+			//		$vtemp = array();
+			//		foreach( $attrdata[ $attribute ] as $key => $value )
+			//		{
+			//			$vtemp[] = array('value_id'=> $value['attrid'], 'value_name'=>$value['attrvalue']);
+			//		}
+			//		$cache = $this->registry->getObject('db')->cacheData( $vtemp );
+			//		$aftertags[] = array( 'cache'=>$cache, 'tag' => 'values_' . $attribute);
+			//	}
+			//	$cache = $this->registry->getObject('db')->cacheData( $temp );
+			//	$this->registry->getObject('template')->getPage()->addTag( 'attributes', array('DATA', $cache ) );
+			//	foreach( $aftertags as $key => $data )
+			//	{
+			//		$this->registry->getObject('template')->getPage()->addTag( $data['tag'], array('DATA', $data['cache'] ) );
+			//	
+			//	}
+			//	if( $this->model->hasCustomTextInputs() )
+			//	{
+			//		if( $this->model->allowUploads() )
+			//		{
+			//			$fieldsdata = $this->model->getCustomTextInputs();
+			//			$tags = array();
+			//			foreach( $fieldsdata as $fieldkey => $name )
+			//			{
+			//				$tags[] = array('fieldkey' => $fieldkey, 'fieldname' => $name );
+			//			}
+			//			$cache = $this->registry->getObject('db')->cacheData( $tags );
+			//			$this->registry->getObject('template')->getPage()->addTag('fields', array( 'DATA', $cache ) );
+			//			$this->registry->getObject('template')->buildFromTemplates('header.tpl.php', 'product-attributes-custom-upload.tpl.php', 'footer.tpl.php');
+			//		}
+			//		else
+			//		{
+			//			$fieldsdata = $this->model->getCustomTextInputs();
+			//			$tags = array();
+			//			foreach( $fieldsdata as $fieldkey => $name )
+			//			{
+			//				$tags[] = array('fieldkey' => $fieldkey, 'fieldname' => $name );
+			//			}
+			//			$cache = $this->registry->getObject('db')->cacheData( $tags );
+			//			$this->registry->getObject('template')->getPage()->addTag('fields', array( 'DATA', $cache ) );
+			//			$this->registry->getObject('template')->buildFromTemplates('header.tpl.php', 'product-attributes-custom.tpl.php', 'footer.tpl.php');
+			//		}
+			//	}
+			//	elseif( $this->model->allowUploads() )
+			//	{
+			//		$this->registry->getObject('template')->buildFromTemplates('header.tpl.php', 'product-attributes-uploads.tpl.php', 'footer.tpl.php');
+			//	}
+			//	else
+			//	{
+			//		$this->registry->getObject('template')->buildFromTemplates('header.tpl.php', 'product-attributes.tpl.php', 'footer.tpl.php');
+			//	}
+			//	
+			//}
+			//else
+			//{
 				$this->registry->getObject('template')->buildFromTemplates('header.tpl.php', 'product.tpl.php', 'footer.tpl.php');
-			}
+			//}
 			
 			
 			
 		}
 		else
 		{
-			$this->productNotFound();
+			$this->bookNotFound();
 		}
 	}
 	
 	/**
-	 * Display invalid product page
+	 * Display invalid book page
 	 * @return void
 	 */
-	private function productNotFound()
+	private function bookNotFound()
 	{
 		$this->registry->getObject('template')->buildFromTemplates('header.tpl.php', 'invalid-product.tpl.php', 'footer.tpl.php');
 	}
@@ -217,7 +217,7 @@ class Bookscontroller{
 		}
 	}	
 	
-	private function listProducts()
+	private function listBooks()
 	{
 		if( $filterSQL == '' )
 		{
@@ -233,7 +233,7 @@ class Bookscontroller{
 		$this->generateFilterOptions();
 	}	
 	
-	private function searchProducts()
+	private function searchBooks()
 	{
 		// check to see if the user has actually submitted the search form
 		if( isset( $_POST['product_search'] ) && $_POST['product_search'] != '' )
@@ -267,7 +267,7 @@ class Bookscontroller{
 		}
 	}
 	
-	private function relatedProducts( $currentProduct )
+	private function relatedBooks( $currentProduct )
 	{
 		$relatedProductsSQL = "SELECT ".
 								" IF(rp.productA<>{$currentProduct},v.name,vn.name) as product_name, IF(rp.productA<>{$currentProduct},c.path,cn.path) as product_path, rp.productA, rp.productB, c.path as cpath, cn.path as cnpath, c.ID as cid, cn.ID as cnid ".
@@ -335,7 +335,7 @@ class Bookscontroller{
 	 * @param array $bits the bits contained within the URL
 	 * @return void
 	 */
-	private function filterProducts( $bits )
+	private function filterBooks( $bits )
 	{
 		// get our attribute types
 		$attributeTypesSQL = "SELECT ID, reference, name, ProductContainedAttribute FROM  product_filter_attribute_types ";

@@ -20,6 +20,7 @@ class Book{
 	private $edition;
 	private $publisher;
 	private $year;
+        	private $activeBook = false;
 	
 	public function __construct( PHPEcommerceFrameworkRegistry $registry, $bookPath )
 	{
@@ -36,57 +37,49 @@ class Book{
 				$this->activeProduct = true;
 				// grab the product data, and associate it with the relevant fields for this object
 				$data = $this->registry->getObject('db')->getRows();
-				if( $data['attributes'] != '' )
-				{
-					$this->hasAttributes = true;
-					$attrs = explode('---ATTR---', $data['attributes'] );
-					foreach( $attrs as $atr )
-					{
-						$value = explode( '--AV--', $atr );
-						$this->attributes[ $value[0] ][] = array( 'attrid' => $value[1], 'attrvalue' => $value[2] );
-						
-					}
+				//if( $data['attributes'] != '' )
+				//{
+				//	$this->hasAttributes = true;
+				//	$attrs = explode('---ATTR---', $data['attributes'] );
+				//	foreach( $attrs as $atr )
+				//	{
+				//		$value = explode( '--AV--', $atr );
+				//		$this->attributes[ $value[0] ][] = array( 'attrid' => $value[1], 'attrvalue' => $value[2] );
+				//		
+				//	}
 					//echo '<pre>' . print_r( $this->attributes, true ) . '</pre>';
 					
-				}
+				//}
 				
-				if( $data['allow_upload'] == 1)
-				{
-					$this->allowUpload = true;
-				}
+				//if( $data['allow_upload'] == 1)
+				//{
+				//	$this->allowUpload = true;
+				//}
 
-                                                                                                $this->bcid = $data[''];
-                                                                                                $this->isbn = $data[''];
-                                                                                                $this->title = $data[''];
-                                                                                                $this->author1 = $data[''];
-                                                                                                $this->author2 = $data[''];
-                                                                                               $this->author3 = $data[''];
-                                                                                                $this->author4 = $data[''];
-                                                                                                $this->author5 = $data[''];
-                                                                                                $this->cover = $data[''];
-                                                                                                $this->category1 = $data[''];
-                                                                                                $this->category2 = $data[''];
-                                                                                                $this->category3 = $data[''];
-                                                                                                $this->language = $data[''];
-                                                                                                $this->pages = $data[''];
-                                                                                                $this->hardcover_flag = $data[''];
-                                                                                                $this->description = $data[''];
-                                                                                                $this->edition = $data[''];
-                                                                                                $this->publisher = $data[''];
-                                                                                                $this->year = $data[''];                                
-                                
-				$this->ID = $data['product_id'];
-                                                                                                $this->ID = $data['product_id'];
-				$this->ID = $data['product_id'];
-				$this->ID = $data['product_id'];
-                                                                                                $this->ID = $data['product_id'];
-				$this->ID = $data['product_id'];
-
-                                
-                                                                                                if( $data['custom_text_inputs'] != '' )
-				{
-					$this->customTextInputs = unserialize( $data['custom_text_inputs'] );
-				}
+                                                                                                $this->bcid = $data['bcid'];
+                                                                                                $this->isbn = $data['isbn'];
+                                                                                                $this->title = $data['title'];
+                                                                                                $this->author1 = $data['author1'];
+                                                                                                $this->author2 = $data['author2'];
+                                                                                               $this->author3 = $data['author3'];
+                                                                                                $this->author4 = $data['author4'];
+                                                                                                $this->author5 = $data['author5'];
+                                                                                                $this->cover = $data['cover'];
+                                                                                                $this->category1 = $data['category1'];
+                                                                                                $this->category2 = $data['category2'];
+                                                                                                $this->category3 = $data['category3'];
+                                                                                                $this->language = $data['language'];
+                                                                                                $this->pages = $data['pages'];
+                                                                                                $this->hardcover_flag = $data['hardcover_flag'];
+                                                                                                $this->description = $data['description'];
+                                                                                                $this->edition = $data['edition'];
+                                                                                                $this->publisher = $data['publisher'];
+                                                                                                $this->year = $data['year'];                                
+                               
+                                                                                               // if( $data['custom_text_inputs'] != '' )
+				//{
+				//	$this->customTextInputs = unserialize( $data['custom_text_inputs'] );
+				//}
 				
 			}
 		}
@@ -109,6 +102,11 @@ class Book{
 			
 		}
 		return $data;
+	}
+	
+        	public function isValid()
+	{
+		return $this->activeBook;
 	}
 	
 	/*
