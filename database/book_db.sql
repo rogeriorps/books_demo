@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 06, 2014 at 04:58 PM
+-- Generation Time: Jun 06, 2014 at 05:58 PM
 -- Server version: 5.5.37-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4
 
@@ -338,7 +338,7 @@ INSERT INTO `controllers` (`ID`, `controller`, `active`) VALUES
 (6, 'basket', 1),
 (7, 'checkout', 1),
 (8, 'useraccount', 1),
-(12, 'books', 1);
+(9, 'book', 1);
 
 -- --------------------------------------------------------
 

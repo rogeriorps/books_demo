@@ -129,7 +129,7 @@ class PHPEcommerceFrameworkRegistry {
 	 */
 	public function getURLData()
 	{
-		$urldata = (isset($_GET['page'])) ? $_GET['page'] : '' ;
+                                                $urldata = (isset($_GET['page'])) ? $_GET['page'] : '' ;                                             
 		self::$urlPath = $urldata;
 		if( $urldata == '' )
 		{

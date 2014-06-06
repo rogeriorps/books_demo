@@ -5,7 +5,7 @@
  * @author Rogerio Pimentel
  * @version 1.0
  */
-class Bookscontroller{
+class Bookcontroller{
 	
 	/**
 	 * Registry object reference
@@ -37,7 +37,8 @@ class Bookscontroller{
 	 */
 	public function __construct( PHPEcommerceFrameworkRegistry $registry, $directCall )
 	{
-		$this->registry = $registry;
+	
+                                                $this->registry = $registry;
 		
 		if( $directCall == true )
 		{
@@ -62,7 +63,6 @@ class Bookscontroller{
 						break;
 					default:
 						$this->listBooks();
-                                                    echo "list books";
 						break;		
 				}
 			}
@@ -84,7 +84,7 @@ class Bookscontroller{
 		$this->model = new Product( $this->registry, $bookPath );
 		if( $this->model->isValid() )
 		{
-			$bookData = $this->model->getData();
+		//	$bookData = $this->model->getData();
 			//if( $productData['stock'] == 0 )
 			//{
 			//	$this->registry->getObject('template')->addTemplateBit( 'stock', 'outofstock.tpl.php' );
@@ -220,10 +220,13 @@ class Bookscontroller{
 	
 	private function listBooks()
 	{
+                                    echo "list booooks";
 		if( $filterSQL == '' )
 		{
-			$sql = "SELECT p.price as product_price, v.name as product_name, c.path as product_path FROM content c, content_versions v, content_types_products p WHERE  p.content_version=v.ID AND v.ID=c.current_revision AND c.active=1 ";
-		}
+			//$sql = "SELECT p.price as product_price, v.name as product_name, c.path as product_path FROM content c, content_versions v, content_types_products p WHERE  p.content_version=v.ID AND v.ID=c.current_revision AND c.active=1 ";
+			$sql = "SELECT b.title as title FROM book_catalog b";
+
+                                                }
 		else
 		{
 			$sql = $filterSQL;
