@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 05, 2014 at 05:03 PM
+-- Generation Time: Jun 06, 2014 at 04:58 PM
 -- Server version: 5.5.37-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4
 
@@ -323,7 +323,7 @@ CREATE TABLE IF NOT EXISTS `controllers` (
   `controller` varchar(25) NOT NULL,
   `active` tinyint(1) NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
 
 --
 -- Dumping data for table `controllers`
@@ -337,7 +337,8 @@ INSERT INTO `controllers` (`ID`, `controller`, `active`) VALUES
 (5, 'contentratings', 1),
 (6, 'basket', 1),
 (7, 'checkout', 1),
-(8, 'useraccount', 1);
+(8, 'useraccount', 1),
+(12, 'books', 1);
 
 -- --------------------------------------------------------
 
