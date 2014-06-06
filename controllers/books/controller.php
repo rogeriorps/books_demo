@@ -62,6 +62,7 @@ class Bookscontroller{
 						break;
 					default:
 						$this->listBooks();
+                                                    echo "list books";
 						break;		
 				}
 			}
@@ -228,8 +229,8 @@ class Bookscontroller{
 			$sql = $filterSQL;
 		}
 		$cache = $this->registry->getObject('db')->cacheQuery( $sql );
-		$this->registry->getObject('template')->getPage()->addTag( 'products', array( 'SQL', $cache ) );	
-		$this->registry->getObject('template')->buildFromTemplates('header_books.tpl.php', 'list-products.tpl.php', 'footer.tpl.php');
+		$this->registry->getObject('template')->getPage()->addTag( 'books', array( 'SQL', $cache ) );	
+		$this->registry->getObject('template')->buildFromTemplates('header_books.tpl.php', 'list-books.tpl.php', 'footer.tpl.php');
 		$this->generateFilterOptions();
 	}	
 	
