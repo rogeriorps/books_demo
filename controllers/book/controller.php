@@ -80,7 +80,7 @@ class Bookcontroller{
 		$pathToRemove = 'books/view/';
 		$bookPath = str_replace( $pathToRemove, '', $this->registry->getURLPath() );
 		
-		require_once( FRAMEWORK_PATH . 'models/books/model.php');
+		require_once( FRAMEWORK_PATH . 'models/book/model.php');
 		$this->model = new Product( $this->registry, $bookPath );
 		if( $this->model->isValid() )
 		{
@@ -194,7 +194,7 @@ class Bookcontroller{
 		$pathToRemove = 'products/stockalert/';
 		$productPath = str_replace( $pathToRemove, '', $this->registry->getURLPath() );
 		
-		require_once( FRAMEWORK_PATH . 'models/products/model.php');
+		require_once( FRAMEWORK_PATH . 'models/book/model.php');
 		$this->model = new Product( $this->registry, $productPath );
 		if( $this->model->isValid() )
 		{
