@@ -25,6 +25,9 @@ class Useraccountcontroller {
 				
 				switch( $urlBits[1] )
 				{
+                                                                                                                        case 'mybooks':
+                                                                                                                                    $this->mybooks();
+                                                                                                                                    break;
 					case 'update-account':
 						$this->saveChangesToAccount();
 						break;
@@ -76,6 +79,12 @@ class Useraccountcontroller {
                                                 }   
                         }
 	
+                        private function mybooks()
+                        {
+
+                         $this->registry->getObject('template')->buildFromTemplates('header.tpl.php', 'mybooks.tpl.php','footer.tpl.php');    
+                        }
+                        
                         private function validateNewUser()
                         {
                                     $this->uservalidation = 0;

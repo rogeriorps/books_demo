@@ -80,7 +80,8 @@ margin: 8px 0px; */
 
 
 #footer{        background: #0096AA;
-clear:left; }
+clear:left;
+margin-top: 12px;}
 
 #searchform {
     height: 38px;
@@ -153,7 +154,7 @@ float: left;
 
 #category_menu {
 width: 140px; 
-                            height: 140px;
+                            height: 250px;
                             margin: 5px 0px 5px 0px;
                             border: 1px solid #DFDFDF;
 border-radius: 10px;

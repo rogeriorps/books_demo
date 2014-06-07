@@ -222,21 +222,19 @@ class Userbookscontroller{
 	
 	private function listUserbooks()
 	{
-                                                echo "conts";
-		if( $filterSQL == '' )
-		{
-			//$sql = "SELECT p.price as product_price, v.name as product_name, c.path as product_path FROM content c, content_versions v, content_types_products p WHERE  p.content_version=v.ID AND v.ID=c.current_revision AND c.active=1 ";
-			$sql = "SELECT b.remarks as remarks FROM user_books b";
-
-                                                }
-		else
-		{
-			$sql = $filterSQL;
-		}
-		$cache = $this->registry->getObject('db')->cacheQuery( $sql );
-		$this->registry->getObject('template')->getPage()->addTag( 'userbooks', array( 'SQL', $cache ) );	
-		$this->registry->getObject('template')->buildFromTemplates('header_books.tpl.php', 'list-userbooks.tpl.php', 'footer.tpl.php');
-		$this->generateFilterOptions();
+                                    if( $filterSQL == '' )
+                                    {
+                                                //$sql = "SELECT p.price as product_price, v.name as product_name, c.path as product_path FROM content c, content_versions v, content_types_products p WHERE  p.content_version=v.ID AND v.ID=c.current_revision AND c.active=1 ";
+                                                $sql = "SELECT b.remarks as remarks FROM user_books b";
+                                    }
+                                    else
+                                    {
+                                                $sql = $filterSQL;
+                                    }
+                                    $cache = $this->registry->getObject('db')->cacheQuery( $sql );
+                                    $this->registry->getObject('template')->getPage()->addTag( 'userbooks', array( 'SQL', $cache ) );	
+                                    $this->registry->getObject('template')->buildFromTemplates('header_books.tpl.php', 'list-userbooks.tpl.php', 'footer.tpl.php');
+                                    $this->generateFilterOptions();
 	}	
 	
 	private function searchUserbooks()
