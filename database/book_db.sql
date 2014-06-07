@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 06, 2014 at 05:58 PM
+-- Generation Time: Jun 07, 2014 at 06:40 PM
 -- Server version: 5.5.37-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4
 
@@ -112,27 +112,6 @@ CREATE TABLE IF NOT EXISTS `book_catalog` (
 
 INSERT INTO `book_catalog` (`bcid`, `isbn`, `title`, `author1`, `author2`, `author3`, `author4`, `author5`, `cover`, `category1`, `category2`, `category3`, `language`, `pages`, `hardcover_flag`, `description`, `edition`, `publisher`, `year`) VALUES
 (1, 2147483647, 'Free : gratis : o futuro dos preços', 'Anderson, Chris', '', '', '', '', '', 'Comercio Varejista', 'Marketing', 'Vendas', 1, 258, 0, 'Em seu revolucionário best seller, A Cauda Longa, Chris Anderson demonstrou como o mercado on-line cria mercado de nicho, permitindo que produtos e consumidores se conectem de uma forma que nunca foi possível.', 1, 'Campus', 2009);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `book_user`
---
-
-CREATE TABLE IF NOT EXISTS `book_user` (
-  `user_id` int(11) NOT NULL,
-  `user_book_id` int(11) NOT NULL AUTO_INCREMENT,
-  `bcid` int(11) NOT NULL,
-  `sell_flag` tinyint(1) NOT NULL,
-  `exchange_flag` tinyint(1) NOT NULL,
-  `highlight_flag` tinyint(1) NOT NULL,
-  `price` float NOT NULL,
-  `remarks` longtext NOT NULL,
-  `pict1` varchar(32) NOT NULL,
-  `pict2` varchar(32) NOT NULL,
-  `pict3` varchar(32) NOT NULL,
-  PRIMARY KEY (`user_book_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -338,7 +317,8 @@ INSERT INTO `controllers` (`ID`, `controller`, `active`) VALUES
 (6, 'basket', 1),
 (7, 'checkout', 1),
 (8, 'useraccount', 1),
-(9, 'book', 1);
+(9, 'book', 1),
+(10, 'userbooks', 1);
 
 -- --------------------------------------------------------
 
@@ -837,6 +817,27 @@ CREATE TABLE IF NOT EXISTS `users_extra` (
 
 INSERT INTO `users_extra` (`user_id`, `default_shipping_name`, `default_shipping_address`, `default_shipping_address2`, `default_shipping_city`, `default_shipping_postcode`, `default_shipping_country`) VALUES
 (1, 'Michael Peacock', 'Design Works', 'William Street', 'Gateshead', 'NE10 0JP', 'UK');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_books`
+--
+
+CREATE TABLE IF NOT EXISTS `user_books` (
+  `user_id` int(11) NOT NULL,
+  `user_book_id` int(11) NOT NULL AUTO_INCREMENT,
+  `bcid` int(11) NOT NULL,
+  `sell_flag` tinyint(1) NOT NULL,
+  `exchange_flag` tinyint(1) NOT NULL,
+  `highlight_flag` tinyint(1) NOT NULL,
+  `price` float NOT NULL,
+  `remarks` longtext NOT NULL,
+  `pict1` varchar(32) NOT NULL,
+  `pict2` varchar(32) NOT NULL,
+  `pict3` varchar(32) NOT NULL,
+  PRIMARY KEY (`user_book_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
