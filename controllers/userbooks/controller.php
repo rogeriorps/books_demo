@@ -5,7 +5,7 @@
  * @author Rogerio Pimentel
  * @version 1.0
  */
-class Bookcontroller{
+class Userbookscontroller{
 	
 	/**
 	 * Registry object reference
@@ -43,26 +43,26 @@ class Bookcontroller{
 		if( $directCall == true )
 		{
 			$urlBits = $this->registry->getURLBits();
-			$this->filterBooks( $urlBits );
+			$this->filterUserbooks( $urlBits );
 			if( !isset( $urlBits[1] ) )
 			{
-				$this->listBooks();
+				$this->listUserbooks();
 			}
 			else
 			{
 				switch( $urlBits[1] )
 				{
 					case 'view':
-						$this->viewBook();
+						$this->viewUserbooks();
 						break;
 					case 'stockalert':
 						$this->informCustomerWhenBackInStock();
 						break;	
 					case 'search':
-						$this->searchBooks();
+						$this->searchUserbooks();
 						break;
 					default:
-						$this->listBooks();
+						$this->listUserbooks();
 						break;		
 				}
 			}
@@ -71,17 +71,17 @@ class Bookcontroller{
 	}
 	
 	/**
-	 * View a book
+	 * View an user book
 	 * @return void
 	 */
-	private function viewBook()
+	private function viewUserbooks()
 	{
 		
-		$pathToRemove = 'books/view/';
+		$pathToRemove = 'userbooks/view/';
 		$bookPath = str_replace( $pathToRemove, '', $this->registry->getURLPath() );
 		
-		require_once( FRAMEWORK_PATH . 'models/books/model.php');
-		$this->model = new Product( $this->registry, $bookPath );
+		require_once( FRAMEWORK_PATH . 'models/userbooks/model.php');
+		$this->model = new Product( $this->registry, $userbooksPath );
 		if( $this->model->isValid() )
 		{
 		//	$bookData = $this->model->getData();
@@ -176,15 +176,15 @@ class Bookcontroller{
 		}
 		else
 		{
-			$this->bookNotFound();
+			$this->userbookNotFound();
 		}
 	}
 	
 	/**
-	 * Display invalid book page
+	 * Display invalid user book page
 	 * @return void
 	 */
-	private function bookNotFound()
+	private function userbookNotFound()
 	{
 		$this->registry->getObject('template')->buildFromTemplates('header.tpl.php', 'invalid-product.tpl.php', 'footer.tpl.php');
 	}
@@ -218,12 +218,12 @@ class Bookcontroller{
 		}
 	}	
 	
-	private function listBooks()
+	private function listUserbooks()
 	{
 		if( $filterSQL == '' )
 		{
 			//$sql = "SELECT p.price as product_price, v.name as product_name, c.path as product_path FROM content c, content_versions v, content_types_products p WHERE  p.content_version=v.ID AND v.ID=c.current_revision AND c.active=1 ";
-			$sql = "SELECT b.title as title FROM book_catalog b";
+			$sql = "SELECT b.title as title FROM user_books b";
 
                                                 }
 		else
@@ -236,7 +236,7 @@ class Bookcontroller{
 		$this->generateFilterOptions();
 	}	
 	
-	private function searchBooks()
+	private function searchUserbooks()
 	{
 		// check to see if the user has actually submitted the search form
 		if( isset( $_POST['product_search'] ) && $_POST['product_search'] != '' )
