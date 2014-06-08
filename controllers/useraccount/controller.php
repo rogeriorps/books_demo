@@ -84,8 +84,8 @@ class Useraccountcontroller {
 		if( $filterSQL == '' )
 		{
 		//	$sql = "SELECT p.price as product_price, v.name as product_name, c.path as product_path FROM content c, content_versions v, content_types_products p WHERE  p.content_version=v.ID AND v.ID=c.current_revision AND c.active=1 ";
-			$sql = "SELECT ub.remarks as remarks FROM user_books ub WHERE  ub.user_id=". $this->registry->getObject('authenticate')->getUserID();
-                                                                       
+			$sql = "SELECT ub.bcid as ub_bcid, ub.user_id as ub_user_id, bc.bcid as bc_bcid, bc.title as bc_title FROM user_books ub, book_catalog bc WHERE  ub.user_id=". $this->registry->getObject('authenticate')->getUserID() . " AND bc.bcid = ub.bcid";
+
                                                 }
 		else
 		{
