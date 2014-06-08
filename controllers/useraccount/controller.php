@@ -81,8 +81,27 @@ class Useraccountcontroller {
 	
                         private function mybooks()
                         {
-
-                         $this->registry->getObject('template')->buildFromTemplates('header.tpl.php', 'mybooks.tpl.php','footer.tpl.php');    
+		if( $filterSQL == '' )
+		{
+		//	$sql = "SELECT p.price as product_price, v.name as product_name, c.path as product_path FROM content c, content_versions v, content_types_products p WHERE  p.content_version=v.ID AND v.ID=c.current_revision AND c.active=1 ";
+			$sql = "SELECT ub.remarks as remarks FROM user_books ub WHERE  ub.user_id=". $this->registry->getObject('authenticate')->getUserID();
+                                                                       
+                                                }
+		else
+		{
+			$sql = $filterSQL;
+		}
+		$cache = $this->registry->getObject('db')->cacheQuery( $sql );
+		$this->registry->getObject('template')->getPage()->addTag( 'userbooks', array( 'SQL', $cache ) );	
+	//	$this->registry->getObject('template')->buildFromTemplates('header_books.tpl.php', 'mybooks.tpl.php', 'footer.tpl.php');
+	//	$this->generateFilterOptions();
+                
+                                                             if( $this->registry->getObject('authenticate')->isLoggedIn() == true ) {
+                                                                        $this->registry->getObject('template')->buildFromTemplates('header_books_logged.tpl.php', 'account/mybooks.tpl.php', 'footer.tpl.php');
+                                                            }
+                                                            else {
+                                                                        $this->registry->getObject('template')->buildFromTemplates('header_books.tpl.php', 'account/mybooks.tpl.php', 'footer.tpl.php');
+                                                            }
                         }
                         
                         private function validateNewUser()

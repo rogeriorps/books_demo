@@ -56,6 +56,7 @@ while( $activeController = $registry->getObject('db')->getRows() )
 }
 
 $currentController = $registry->getURLBit( 0 );    
+
 if( in_array( $currentController, $activeControllers ) )
 {
                         require_once( FRAMEWORK_PATH . 'controllers/' . $currentController . '/controller.php');

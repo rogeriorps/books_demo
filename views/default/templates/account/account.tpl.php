@@ -20,6 +20,3 @@
 <p><a href="useraccount/change-password">Change your password.</a></p>
  </div>
 
-<div  id="main">
-teste
- </div>
