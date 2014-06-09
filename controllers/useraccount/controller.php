@@ -25,6 +25,9 @@ class Useraccountcontroller {
 				
 				switch( $urlBits[1] )
 				{
+                                                                                                                        case 'addbooks':
+                                                                                                                                    $this->addbooks();
+                                                                                                                                    break;
                                                                                                                         case 'mybooks':
                                                                                                                                     $this->mybooks();
                                                                                                                                     break;
@@ -81,6 +84,17 @@ class Useraccountcontroller {
                                 		}
                                                 }   
                         }
+                        
+                        private function addbooks()
+                        {
+                                    if( $this->registry->getObject('authenticate')->isLoggedIn() == true ) {
+                                                $this->registry->getObject('template')->buildFromTemplates('header_books_logged.tpl.php', 'account/leftmenu.tpl.php','account/addbooks.tpl.php', 'footer.tpl.php');
+                                    }
+                                    else {
+                                                $this->registry->getObject('template')->buildFromTemplates('header_books.tpl.php',  'account/leftmenu.tpl.php','account/addbooks.tpl.php', 'footer.tpl.php');
+                                    }           
+                        }
+                        
 	private function myprofile()
                         {
                                     if( $this->registry->getObject('authenticate')->isLoggedIn() == true ) {
