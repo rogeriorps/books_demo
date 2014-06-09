@@ -28,7 +28,10 @@ class Useraccountcontroller {
                                                                                                                         case 'mybooks':
                                                                                                                                     $this->mybooks();
                                                                                                                                     break;
-					case 'update-account':
+                                                                                                                        case 'myprofile':
+                                                                                                                                    $this->myprofile();
+                                                                                                                                    break;
+                                                                                                                                case 'update-account':
 						$this->saveChangesToAccount();
 						break;
 					case 'change-password':
@@ -78,7 +81,16 @@ class Useraccountcontroller {
                                 		}
                                                 }   
                         }
-	
+	private function myprofile()
+                        {
+                                    if( $this->registry->getObject('authenticate')->isLoggedIn() == true ) {
+                                                $this->registry->getObject('template')->buildFromTemplates('header_books_logged.tpl.php', 'account/leftmenu.tpl.php','account/myprofile.tpl.php', 'footer.tpl.php');
+                                    }
+                                    else {
+                                                $this->registry->getObject('template')->buildFromTemplates('header_books.tpl.php',  'account/leftmenu.tpl.php','account/myprofile.tpl.php', 'footer.tpl.php');
+                                    }           
+                        }
+                        
                         private function mybooks()
                         {
 		if( $filterSQL == '' )
@@ -97,10 +109,10 @@ class Useraccountcontroller {
 	//	$this->generateFilterOptions();
                 
                                                              if( $this->registry->getObject('authenticate')->isLoggedIn() == true ) {
-                                                                        $this->registry->getObject('template')->buildFromTemplates('header_books_logged.tpl.php', 'account/mybooks.tpl.php', 'footer.tpl.php');
+                                                                        $this->registry->getObject('template')->buildFromTemplates('header_books_logged.tpl.php', 'account/leftmenu.tpl.php', 'account/mybooks.tpl.php', 'footer.tpl.php');
                                                             }
                                                             else {
-                                                                        $this->registry->getObject('template')->buildFromTemplates('header_books.tpl.php', 'account/mybooks.tpl.php', 'footer.tpl.php');
+                                                                        $this->registry->getObject('template')->buildFromTemplates('header_books.tpl.php', 'account/leftmenu.tpl.php', 'account/mybooks.tpl.php', 'footer.tpl.php');
                                                             }
                         }
                         
@@ -133,7 +145,7 @@ class Useraccountcontroller {
                         
 	private function mainUI()
 	{
-                                                $this->registry->getObject('template')->buildFromTemplates('header_books_logged.tpl.php', 'account/account.tpl.php','footer.tpl.php');
+                                                $this->registry->getObject('template')->buildFromTemplates('header_books_logged.tpl.php', 'account/leftmenu.tpl.php', 'account/account.tpl.php','footer.tpl.php');
 		$sql = "SELECT e.*, u.email FROM users_extra e, users u WHERE e.user_id=u.ID and u.ID=" .  $this->registry->getObject('authenticate')->getUserID();
 		$this->registry->getObject('db')->executeQuery( $sql );
 		$this->registry->getObject('template')->dataToTags( $this->registry->getObject('db')->getRows(), '');

@@ -1,4 +1,4 @@
 <div  id="main">
-Minha conta
+Meu Perfil
 
  </div>

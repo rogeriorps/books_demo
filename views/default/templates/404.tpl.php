@@ -10,7 +10,7 @@
 
 <script type="text/javascript" src="http://books.google.com/books/previewlib.js"></script>
 <script type="text/javascript">
-GBS_insertPreviewButtonPopup('ISBN:0738531367');
+GBS_insertPreviewButtonPopup('ISBN:9788535242591');
 </script>
 
 
