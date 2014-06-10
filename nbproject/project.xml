@@ -6,7 +6,9 @@
             <name>phptest</name>
         </data>
         <spellchecker-wordlist xmlns="http://www.netbeans.org/ns/spellchecker-wordlist/1">
+            <word>livro</word>
             <word>livros</word>
+            <word>xlsx</word>
         </spellchecker-wordlist>
     </configuration>
 </project>
