@@ -90,7 +90,13 @@ class Useraccountcontroller {
                             
                             if (isset($_POST['add_1_book_flag']))
                             {
-                                echo "add 1 book";
+                                //verify isbn number
+                                echo $_POST['isbn_1_book'];
+                                $sql = "SELECT b.isbn as b_isbn FROM book_catalog b";
+                                    $this->registry->getObject('db')->executeQuery( $sql );
+
+                                $cache = $this->registry->getObject('db')->cacheQuery( $sql );
+                                
                             }
                             
                             if(isset($_POST['add_multiple_books_flag']))

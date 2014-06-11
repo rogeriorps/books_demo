@@ -6,7 +6,7 @@
     <h2>Adicionar 1 livro</h2>
     <br>
 <form action="useraccount/addbooks" method="post">
-    ISBN: <input type="text"  name="user_name" /><br />
+    ISBN: <input type="text"  name="isbn_1_book" /><br />
     <input type="hidden" value="1" name="add_1_book_flag"/>
     <input type="submit"  value="Enviar" name="" />
 </form>

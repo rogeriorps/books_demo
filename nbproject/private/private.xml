@@ -3,14 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/rogerio/book/index.php</file>
-            <file>file:/home/rogerio/book/views/default/templates/account/mybooks.tpl.php</file>
+            <file>file:/home/rogerio/book/registry/databaseobjects/mysql.database.class.php</file>
             <file>file:/home/rogerio/book/views/default/default.css</file>
             <file>file:/home/rogerio/book/controllers/useraccount/controller.php</file>
             <file>file:/home/rogerio/book/models/userbooks/model.php</file>
-            <file>file:/home/rogerio/book/registry/objects/template.class.php</file>
+            <file>file:/home/rogerio/book/views/default/templates/account/addbooks.tpl.php</file>
             <file>file:/home/rogerio/book/controllers/userbooks/controller.php</file>
-            <file>file:/home/rogerio/book/registry/objects/page.class.php</file>
+            <file>file:/home/rogerio/book/views/default/templates/register.tpl.php</file>
+            <file>file:/home/rogerio/book/scripts/php/upload_file.php</file>
         </group>
     </open-files>
 </project-private>
