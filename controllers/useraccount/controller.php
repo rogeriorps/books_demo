@@ -87,6 +87,18 @@ class Useraccountcontroller {
                         
                         private function addbooks()
                         {
+                            
+                            if (isset($_POST['add_1_book_flag']))
+                            {
+                                echo "add 1 book";
+                            }
+                            
+                            if(isset($_POST['add_multiple_books_flag']))
+                            {
+                                echo "add multiple books";
+                            }
+                            
+                            
                                     if( $this->registry->getObject('authenticate')->isLoggedIn() == true ) {
                                                 $this->registry->getObject('template')->buildFromTemplates('header_books_logged.tpl.php', 'account/leftmenu.tpl.php','account/addbooks.tpl.php', 'footer.tpl.php');
                                     }

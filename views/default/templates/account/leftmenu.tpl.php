@@ -15,6 +15,6 @@
 <h1>Itens Vendidos</h1>
 
 
-<p><a href="useraccount/change-password">Change your password.</a></p>
+<p><a href="useraccount/change-password">Trocar de senha</a></p>
  </div>
 

@@ -1,18 +1,30 @@
 
 <div id="main">
-    Adicionar livros
-
-    Adicionar 1 livro
-    
-    Adicionar vários livros (arquivos xls, xlsx, cvs)
-    
-    <form action="scripts/php/upload_file.php" method="post"
-enctype="multipart/form-data">
-<label for="file">Filename:</label>
-<input type="file" name="file" id="file"><br>
-<input type="submit" name="submit" value="Submit">
+    <h1> Adicionar livros</h1>
+<br>
+<br>
+    <h2>Adicionar 1 livro</h2>
+    <br>
+<form action="useraccount/addbooks" method="post">
+    ISBN: <input type="text"  name="user_name" /><br />
+    <input type="hidden" value="1" name="add_1_book_flag"/>
+    <input type="submit"  value="Enviar" name="" />
 </form>
-
+    <br>
+    
+    <h2>Adicionar vários livros (arquivos xls, xlsx, cvs)</h2>
+<br>
+<br>
+    
+    <form action="useraccount/addbooks" method="post"
+enctype="multipart/form-data">
+<label for="file">Arquivo:</label>
+<input type="file" name="file" id="file"><br>
+<input type="hidden" value="1" name="add_multiple_books_flag"/>
+<input type="submit" name="submit" value="Enviar">
+</form>
+<br>
+<br>
     
     Template xls
     Template xlsx
