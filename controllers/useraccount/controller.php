@@ -91,12 +91,13 @@ class Useraccountcontroller {
                             if (isset($_POST['add_1_book_flag']))
                             {
                                 //verify isbn number
-                                echo $_POST['isbn_1_book'];
-                                $sql = "SELECT b.isbn as b_isbn FROM book_catalog b";
-                                    $this->registry->getObject('db')->executeQuery( $sql );
-
-                                $cache = $this->registry->getObject('db')->cacheQuery( $sql );
-                                
+                                $isbn_from_form = $_POST['isbn_1_book'];
+                                $sql = "SELECT b.isbn as b_isbn FROM book_catalog b WHERE isbn = {$isbn_from_form}" ;
+                                $query = $this->registry->getObject('db')->cacheQuery( $sql );
+	        if( $this->registry->getObject('db')->numRowsFromCache( $query ) == 0 )
+                                           echo "nao tem registro";
+                               else
+                                       echo "tem registro";
                             }
                             
                             if(isset($_POST['add_multiple_books_flag']))

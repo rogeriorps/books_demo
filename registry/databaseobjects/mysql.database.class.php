@@ -226,7 +226,7 @@ class mysqldatabase {
     {
     	if( !$result = $this->connections[$this->activeConnection]->query( $queryStr ) )
     	{
-	    	echo $queryStr;
+	    	
 		    trigger_error('Error executing query: '.$this->connections[$this->activeConnection]->error, E_USER_ERROR);
 		}
 		else
