@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 07, 2014 at 06:40 PM
+-- Generation Time: Jun 16, 2014 at 09:06 PM
 -- Server version: 5.5.37-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4
 
@@ -302,7 +302,7 @@ CREATE TABLE IF NOT EXISTS `controllers` (
   `controller` varchar(25) NOT NULL,
   `active` tinyint(1) NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
 
 --
 -- Dumping data for table `controllers`
@@ -837,7 +837,14 @@ CREATE TABLE IF NOT EXISTS `user_books` (
   `pict2` varchar(32) NOT NULL,
   `pict3` varchar(32) NOT NULL,
   PRIMARY KEY (`user_book_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `user_books`
+--
+
+INSERT INTO `user_books` (`user_id`, `user_book_id`, `bcid`, `sell_flag`, `exchange_flag`, `highlight_flag`, `price`, `remarks`, `pict1`, `pict2`, `pict3`) VALUES
+(3, 1, 1, 1, 0, 1, 10, 'O livro está em boas condições.', '', '', '');
 
 -- --------------------------------------------------------
 
